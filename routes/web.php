@@ -78,3 +78,28 @@ Route::get('/form/layouts-horizontal', $controller_path . '\form_layouts\Horizon
 
 // tables
 Route::get('/tables/basic', $controller_path . '\tables\Basic@index')->name('tables-basic');
+
+
+
+///////////////////////////////////// evenement  ///////////////////////////////////
+Route::get('/Centre', function () {
+    return view('centres.centre');
+});
+
+Route::get('/Centre', [App\Http\Controllers\CentreController::class, 'index']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+
+
+//Route::get('/create', [App\Http\Controllers\CentreController::class, 'create']);
+
+
+Route::post('/addcentre', [App\Http\Controllers\CentreController::class, 'add']);
+Route::get('/addcentre', function () {
+    return view('centres.addcentre');
+});

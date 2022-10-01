@@ -9,6 +9,19 @@ const path = require('path');
  |--------------------------------------------------------------------------
  */
 
+ mix
+ .js('resources/js/app.js', 'public/js')
+ .sass('resources/sass/app.scss', 'public/css');
+
+ mix
+    .js('resources/js/app.js', 'public/js')
+    .sass('resources/sass/app.scss', 'public/css')
+    .copy(
+        'node_modules/@fortawesome/fontawesome-free/webfonts',
+        'public/webfonts'
+    );
+
+
 mix.options({
   resourceRoot: process.env.ASSET_URL || undefined,
   processCssUrls: false,
