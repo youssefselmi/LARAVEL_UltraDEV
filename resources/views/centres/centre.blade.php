@@ -1,15 +1,73 @@
-@extends('layouts/contentNavbarLayout')
+@extends('../layout/' . $layout)
 
-@section('title', 'Tables - Basic Tables')
+@section('subhead')
+    <title>Categories - Midone - Tailwind HTML Admin Template</title>
+@endsection
 
-@section('content')
-<h4 class="fw-bold py-3 mb-4">
-  <span class="text-muted fw-light">Tables /</span> Basic Tables
-</h4>
+@section('subcontent')
+
+
+
+
+
+
+<h2 class="intro-y text-lg font-medium mt-10">Centres</h2>
+
+<div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
+            <button class="btn btn-primary shadow-md mr-2">Add New Centre</button>
+            <div class="dropdown">
+                <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
+                    <span class="w-5 h-5 flex items-center justify-center">
+                        <i class="w-4 h-4" data-lucide="plus"></i>
+                    </span>
+                </button>
+                <div class="dropdown-menu w-40">
+                    <ul class="dropdown-content">
+                        <li>
+                            <a href="" class="dropdown-item">
+                                <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="dropdown-item">
+                                <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to Excel
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="dropdown-item">
+                                <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to PDF
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="hidden md:block mx-auto text-slate-500">Showing 1 to 10 of 150 entries</div>
+            <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
+                <div class="w-56 relative text-slate-500">
+                    <input type="text" class="form-control w-56 box pr-10" placeholder="Search...">
+                    <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <div class="head" style="display: block-flex; align-items: center">
-    <h1>Liste Centres</h1>
     <hr />
     <br />
     <div class="text-right">
@@ -53,7 +111,7 @@
 >
 @foreach ($centres as $centre)
 
-    <div
+<div
         class="card mt-2"
         style="width: 20rem; transition: opacity 0.5s"
         id="{{ $centre->id }}"
@@ -66,11 +124,10 @@
         />
         <div class="card-body">
             <h5 class="card-title mb-2 font-weight-bold">
-            {{ $centre["nom"] }}
-
+                {{ $centre["nom"] }}
             </h5>
             <p class="card-text text-muted text-truncate">
-            {{ $centre["locale"] }}
+                {{ $centre["type"] }}
             </p>
             <div
                 class="actions"
@@ -80,14 +137,14 @@
                     align-items: center;
                 "
             >
-                <a href="/" style="opacity : 0; width : 0; height : 0" disabled>Explorer plus</a>
+                <a href="/centre" style="opacity : 0; width : 0; height : 0" disabled>Explorer plus</a>
                 <div
                     class="action-icon-buttons"
                     style="display: flex; gap: 1rem"
                 >
                     <form
                         class="edit-form"
-                        action=""
+                        action="/centre/{{ $centre['id'] }}/modifier"
                         method="GET"
                     >
                         <button
@@ -114,7 +171,7 @@
                     </form>
                     <form
                         class="delete-form"
-                        action=""
+                        action="/centre/{{$centre->id}}"
                         method="POST"
                     >
                         @csrf @method('DELETE')
@@ -140,10 +197,10 @@
             </div>
         </div>
     </div>
-    @endforeach  @if (count($centres) == 0)
-    <h4>Pas de centres pour le moment</h4>
+    @endforeach @if (count($centres) == 0)
+    <h4>Pas de centre pour le moment</h4>
     @endif
-  </div>
+</div>
 <div class="evenements-list-container">
     <table class="mb-0 table table-hover">
         <thead>
@@ -151,14 +208,13 @@
                 <th>ID</th>
                 <th>Nom</th>
                 <th>Type</th>
-                <th>Local</th>
+                <th>Locale</th>
                 <th>Image</th>
-
                 <th>Actions</th>
             </tr>
         </thead>
+        @if (count($centres) == 0)
         <tbody>
-
             <tr>
                 <th scope="row">----</th>
                 <td>----</td>
@@ -167,61 +223,51 @@
                 <td>----</td>
                 <td>----</td>
             </tr>
-        </tbody> 
-
+        </tbody>
+        @endif @if (count($centres) != 0)
         <tbody>
-        @foreach ($centres as $centre)
-
+            @foreach ($centres as $centre)
             <tr>
-            <th scope="row">{{ $centre["id"] }}</th>
-            <td>{{ $centre["nom"] }}</td>
+                <th scope="row">{{ $centre["id"] }}</th>
+                <td>{{ $centre["nom"] }}</td>
                 <td class="text-truncate" style="max-width: 150px">
-                {{ $centre["type"] }}
- 
-                </td>
+                <img
+            class="card-img-top"
+            src="{{ 'storage/imgs/'.$centre['image'] }}"
+            alt="evenement photo"
+            style="max-height: 15rem; object-fit: cover
+            width : 50px;
+height : 50px;
+            "
+        />                </td>
                 <td>
-                {{ $centre["locale"] }}
- 
+                    {{ $centre["type"] }}
                 </td>
-               
-                <td>
-                <img src="storage/imgs/{{$centre->image}}" width="70px"/>
-                </td>
-                <td class="d-flex align-items-center">
-                    <form
-                        class="edit-form"
-                        action=""
-                        method="GET"
-                    >
-                        <button
-                            class="btn"
-                            style="color: rgb(194, 194, 194); font-size: 1.2rem"
-                            data-toggle="tooltip"
-                            data-placement="top"
-                            title="modifier"
-                        >
-                        Edit
-                          </button>
-                    </form>
-                    <!-- <button
-                        onclick="document.querySelector('.edit-form').submit()"
-                        class="btn"
-                        style="color: rgb(194, 194, 194); font-size: 1.2rem"
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="modifier"
-                    >
-                        <i class="fas fa-edit"></i>
-                        <form
-                            class="edit-form d-none"
-                            action=""
-                            method="GET"
-                        ></form>
-                    </button> -->
+                <td>{{ $centre["locale"] }} H</td>
+            
+                <td class="table-report__action w-56">
 
-                    <form
+                            <!--    <div class="flex justify-center items-center">
+                                    <form class="flex items-center mr-3" href="javascript:;"  >
+                                    <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
+                                    
+
+                                    </form>
+                                    <form class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"  action="/deletecentre/{{$centre->id}}" method="POST">
+                                    @csrf @method('DELETE')   
+ 
+                                    <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
+                                    </form>
+
+
+                                </div>
+                          
+-->
+
+                     <!--
+                                   <form
                         class="delete-form"
-                        action=""
+                        action="/deletecentre/{{$centre->id}}"
                         method="POST"
                     >
                         @csrf @method('DELETE')
@@ -234,30 +280,56 @@
                             data-placement="top"
                             title="supprimer"
                         >
-                        Delete
-                          </button>
+                        <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i>   
+                                          </button>
                     </form>
-                    <!-- <button
-                        onclick="document.querySelector('.delete-form').submit()"
-                        class="btn"
-                        style="color: rgb(255, 35, 35); font-size: 1.2rem"
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="supprimer"
+
+-->
+
+<form
+                        class="edit-form"
+                        action="/centre/{{ $centre['id'] }}/modifier"
+                        method="GET"
                     >
-                        <i class="fas fa-trash"></i>
-                        <form
-                            class="delete-form d-none"
-                            action=""
-                            method="POST"
+                        <button
+                            class="btn btn-success"
+                            style="color: rgb(194, 194, 194); font-size: 1.2rem"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="modifier"
                         >
-                            @csrf @method('DELETE')
-                        </form>
-                    </button> -->
-                </td>
+                        <i data-lucide="check-square" class="w-4 h-4 mr-1"></i>                        </button>
+                    </form>
+
+
+
+
+                    <form class="delete-form" action="/deletecentre/{{$centre->id}}"method="POST">
+                        @csrf @method('DELETE')
+                        <button class="btn btn-danger" data-toggle="tooltip" data-placement="left" title="supprimer" >                    
+                         <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i>   
+                        </button>
+                    </form>
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+                
             </tr>
             @endforeach
         </tbody>
+        @endif
     </table>
 </div>
 

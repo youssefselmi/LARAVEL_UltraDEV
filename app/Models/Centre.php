@@ -9,6 +9,8 @@ class Centre extends Model
 {
     use HasFactory;
 
+
+    
     protected $fillable = [
         'nom',
         'image',
