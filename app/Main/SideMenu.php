@@ -53,7 +53,7 @@ class SideMenu
             ],
             'centres' => [
                 'icon' => 'inbox',
-                'route_name' => 'inbox',
+                'route_name' => 'centregrid',
               //  'route' => '/Centre',
 
                 'params' => [

@@ -18,6 +18,14 @@ class CentreController extends Controller
 
 
 
+     
+    public function index2()
+    {
+        return view('centres.gridcentre', [ 'centres' => \App\Models\Centre::all() ]);
+    }
+
+
+
 
 
     public function add(){

@@ -115,6 +115,23 @@ Route::get('/Centre', function () {
 Route::get('/Centre', [App\Http\Controllers\CentreController::class, 'index']);
 
 
+///////////////////////////////////////////////////////////////////////////////////////////
+
+
+Route::get('/centregrid', function () {
+    return view('centres.centregrid');
+});
+Route::get('/centregrid', [App\Http\Controllers\CentreController::class, 'index2'])->name("centregrid");
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
 
 Route::post('/addcentre', [App\Http\Controllers\CentreController::class, 'add']);
 Route::get('/addcentre', function () {

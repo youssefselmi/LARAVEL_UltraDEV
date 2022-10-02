@@ -32,12 +32,11 @@
         <div class="col-sm-10">
             <input
                 name="nom"
-                placeholder="e.g A.L.A cancert"
+                placeholder="e.g CentreSPA"
                 type="text"
                 class="form-control"
                 required
             />
-            <div class="invalid-feedback">Veuillez entrer un valid nom</div>
         </div>
     </div>
 
@@ -53,10 +52,7 @@
                 accept="image/png, image/gif, image/jpeg"
                 required
             />
-            <div class="invalid-feedback">Veuillez entrer une photo valide</div>
-            <small class="form-text text-muted"
-                >Choisissez des photos avec des bonnes qualités</small
-            >
+        
         </div>
     </div>
 
@@ -71,12 +67,11 @@
         <div class="col-sm-10">
             <input
                 name="locale"
-                placeholder="e.g A.L.A cancert"
+                placeholder="e.g Hammamet"
                 type="text"
                 class="form-control"
                 required
             />
-            <div class="invalid-feedback">Veuillez entrer un valid locale</div>
         </div>
     </div>
 
@@ -94,12 +89,11 @@
         <div class="col-sm-10">
             <input
                 name="type"
-                placeholder="e.g A.L.A cancert"
+                placeholder="e.g SPA"
                 type="text"
                 class="form-control"
                 required
             />
-            <div class="invalid-feedback">Veuillez entrer un valid type</div>
         </div>
     </div>
 
