@@ -11,30 +11,27 @@
 
 
 
-<h1>Creation d'un Centre</h1>
+<h1>Creation d'un Type</h1>
 <hr />
 <br /><br />
-<div class="grid grid-cols-12 gap-6 mt-5">
-        <div class="intro-y col-span-12 lg:col-span-6">
-            <!-- BEGIN: Form Layout -->
-            <div class="intro-y box p-5">
+
 <form  data-single="true"  
     autocomplete="off"
     class="needs-validation"
     novalidate
     method="POST"
-    action="/addcentre"
+    action="/addtype"
     enctype="multipart/form-data"
     onsubmit="return checkDate()"
 >
     @csrf
     <div class="position-relative row form-group">
-        <label for="nom" class="col-sm-2 col-form-label"
-            >Nom de centre</label
+        <label for="type" class="col-sm-2 col-form-label"
+            >Type </label
         >
         <div class="col-sm-10">
             <input
-                name="nom"
+                name="type"
                 placeholder="e.g CentreSPA"
                 type="text"
                 class="form-control"
@@ -43,82 +40,6 @@
             />
         </div>
     </div>
-
-
-
-   
-    <div class="position-relative row form-group">
-        <label for="image" class="col-sm-2 col-form-label">Photo</label>
-        <div class="col-sm-10">
-            <input
-                name="image"
-                id="exampleFile"
-                type="file"
-                class="form-control-file"
-                accept="image/png, image/gif, image/jpeg"
-                required
-            />
-        
-        </div>
-    </div>                     
-
-
-       
-
-       
-
-
-
-
-    <div class="position-relative row form-group">
-        <label for="locale" class="col-sm-2 col-form-label"
-            >Locale</label
-        >
-        <div class="col-sm-10">
-            <input
-                name="locale"
-                placeholder="e.g Hammamet"
-                type="text"
-                class="form-control"
-                required
-            />
-        </div>
-    </div>
-
-
-
-    
-                                    
-                                
-
-
-
-
-
-
-
-
-
-    <div class="position-relative row form-group">
-        <label for="type" class="col-sm-2 col-form-label"
-            >Nom de type</label
-        >
-        <div class="col-sm-10">
-            <input
-                name="type"
-                placeholder="e.g SPA"
-                type="text"
-                class="form-control"
-                required
-            />
-        </div>
-    </div>
-
-
-
-
-
-
 
 
 
@@ -131,9 +52,7 @@
     </div>
     
 </form>
-</div>
-    </div>  </div>
-    
+
 <button type="button" class="open-modal" data-toggle="modal" data-target="#exampleModal" style="width : 0; height : 0; opacity : 0">
 </button>
 

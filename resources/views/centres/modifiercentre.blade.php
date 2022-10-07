@@ -18,6 +18,11 @@
 <hr />
 <br /><br />
 
+<div class="grid grid-cols-12 gap-6 mt-5">
+        <div class="intro-y col-span-12 lg:col-span-6">
+            <!-- BEGIN: Form Layout -->
+            <div class="intro-y box p-5">
+
 <form
     autocomplete="off"
     class="needs-validation"
@@ -102,7 +107,7 @@
 
   
 
-
+    
  
  
     <div class="position-relative row form-check p-0">
@@ -111,6 +116,8 @@
         </div>
     </div>
 </form>
+
+</div></div></div>
 
 <button type="button" class="open-modal" data-toggle="modal" data-target="#exampleModal" style="width : 0; height : 0; opacity : 0">
 </button>

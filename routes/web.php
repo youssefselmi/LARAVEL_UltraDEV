@@ -6,6 +6,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\CentreController;
+use App\Http\Controllers\TypeCentreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -118,6 +119,29 @@ Route::get('/Centre', [App\Http\Controllers\CentreController::class, 'index']);
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 
+
+Route::get('/typecentre', function () {
+    return view('typescentres.typescentre');
+});
+
+Route::get('/typecentre', [App\Http\Controllers\TypeCentreController::class, 'index']);
+
+Route::delete('/deletetype/{typecentre}', [App\Http\Controllers\TypeCentreController::class, 'destroy']);
+
+
+
+Route::post('/addtype', [App\Http\Controllers\TypeCentreController::class, 'add']);
+Route::get('/addtype', function () {
+    return view('typescentres.addtype');
+});
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////
+
 Route::get('/centregrid', function () {
     return view('centres.centregrid');
 });
@@ -129,19 +153,12 @@ Route::get('/centregrid', [App\Http\Controllers\CentreController::class, 'index2
 
 
 
-
-
-
-
 Route::post('/addcentre', [App\Http\Controllers\CentreController::class, 'add']);
 Route::get('/addcentre', function () {
     return view('centres.addcentre');
 });
 
-
-
 Route::delete('/deletecentre/{centre}', [App\Http\Controllers\CentreController::class, 'destroy']);
-
 
 
 Route::get('/centre/{centre}/modifier', [App\Http\Controllers\CentreController::class, 'getUpdate']);
