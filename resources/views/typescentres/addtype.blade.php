@@ -22,7 +22,6 @@
     method="POST"
     action="/addtype"
     enctype="multipart/form-data"
-    onsubmit="return checkDate()"
 >
     @csrf
     <div class="position-relative row form-group">
@@ -32,13 +31,24 @@
         <div class="col-sm-10">
             <input
                 name="type"
-                placeholder="e.g CentreSPA"
+                placeholder="type.."
                 type="text"
                 class="form-control"
-                required
+                
                 
             />
         </div>
+
+        
+    <div class="col-sm-10">
+    <div style="background-color:red" >
+    @error('type')
+    {{$message}}
+    @enderror
+    </div>
+    </div>
+
+
     </div>
 
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Centre;
+use App\Models\TypeCentre;
+use Illuminate\Support\Facades\DB;
 
 class CentreController extends Controller
 {
@@ -18,6 +20,7 @@ class CentreController extends Controller
 
 
 
+
      
     public function index2()
     {
@@ -25,26 +28,43 @@ class CentreController extends Controller
     }
 
 
+    
+
+
+
+     
+    public function gettypes()
+    {
+        return view('centres.addcentre', [ 'po' => \App\Models\TypeCentre::all() ]);
+    }
+
+
+    
+ 
 
 
 
     public function add(){
+
+
         $data = request()->validate([
             'nom' =>'required',
             'image' => ['required', 'image'],
             'locale' =>'required',
             'type' =>'required',
-        ]);
-
+        ],
+        
+        [
+            'nom.required' =>'Remplir le nom ',
+            'locale.required' =>'Remplir la locale ',
+            'image.required' =>'Remplir image ',
+            'type.required' =>'Remplir le type ',      
+        ]  
+    );
         request()->file('image')->move(
             public_path('storage/imgs'),
             request()->file('image')->getClientOriginalName()
         );
-
-        // $photo = request()->photo;
-
-        // dd(request()->hasFile('photo'));
-        // dd($photo);
 
         \App\Models\Centre::create([
             'nom' => $data['nom'],
@@ -53,6 +73,8 @@ class CentreController extends Controller
             'type' => $data['type'],
         ]);
 
+
+        
         return redirect('/Centre');
 
     }
@@ -62,8 +84,8 @@ class CentreController extends Controller
 
     public function create(){
 
+        $donnes = DB::table('type_centres')->get();
         return view('centres.addcentre');
-
     }
 
 
@@ -84,34 +106,25 @@ class CentreController extends Controller
 
 
 
-/*
-
-    public function destroy($id)
-    {
-
-        $centre = Centre::findOrFail($id);
-        $centre->delete();
-
-        return redirect('/centre')->with('success', 'Personnage Modifié avec succès');
-
-    }
-
-*/
-
-
-
     public function getUpdate(Centre $centre){
         return view('centres.modifiercentre', compact('centre'));
     }
 
-    public function update(Centre $centre){
+    public function update(Centre $centre,Request $request){
 
-        $data = request()->validate([
+        $data = $request->validate([
             'nom' =>'required',
             'image' => ['required', 'image'],
             'locale' =>'required',
             'type' =>'required',
-        ]);
+        ],
+        
+        [
+            'nom.required' =>'Remplir le nom ',
+            'locale.required' =>'Remplir la locale ',
+            'type.required' =>'Remplir le type ',      
+        ]  
+    );
 
         $path = '';
         if (request()->hasFile('image')){
@@ -135,6 +148,15 @@ class CentreController extends Controller
     }
 
 
+
+
+
+    public function show($id){
+
+            $centres=Centre::find($id);
+            return view('centres.show')->with('centres', $centres);
+
+    }
 
 
 

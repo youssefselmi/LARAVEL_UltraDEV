@@ -52,6 +52,64 @@
         </div>
         <!-- BEGIN: Users Layout -->
         @foreach ($centres as $centre)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <div class="intro-y col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3">
                 <div class="box">
                     <div class="p-5">
@@ -161,4 +219,8 @@
         </div>
         <!-- END: Pagination -->
     </div>
+
+
+
+
 @endsection

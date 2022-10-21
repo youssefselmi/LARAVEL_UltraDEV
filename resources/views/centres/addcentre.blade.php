@@ -18,33 +18,38 @@
         <div class="intro-y col-span-12 lg:col-span-6">
             <!-- BEGIN: Form Layout -->
             <div class="intro-y box p-5">
-<form  data-single="true"  
-    autocomplete="off"
-    class="needs-validation"
-    novalidate
-    method="POST"
-    action="/addcentre"
-    enctype="multipart/form-data"
-    onsubmit="return checkDate()"
->
+
+
+        
+
+
+
+
+<form  data-single="true"   autocomplete="off" novalidate method="POST" action="/addcentre" enctype="multipart/form-data">
     @csrf
     <div class="position-relative row form-group">
         <label for="nom" class="col-sm-2 col-form-label"
             >Nom de centre</label
         >
         <div class="col-sm-10">
-            <input
-                name="nom"
-                placeholder="e.g CentreSPA"
-                type="text"
-                class="form-control"
-                required
-                
-            />
+            <input name="nom" placeholder="nom.."  type="text" class="form-control" />
         </div>
+
+
+    <div class="col-sm-10">
+    <div style="background-color:red" >
+    @error('nom')
+    {{$message}}
+    @enderror
+
+    </div>
     </div>
 
 
+    </div>
+
+
+    <br>
 
    
     <div class="position-relative row form-group">
@@ -56,16 +61,26 @@
                 type="file"
                 class="form-control-file"
                 accept="image/png, image/gif, image/jpeg"
-                required
+                
             />
         
         </div>
+
+        <div class="col-sm-10">
+    <div style="background-color:red" >    @error('image')
+    {{$message}}
+    @enderror
+    </div>
+
+    </div>
     </div>                     
 
 
        
 
        
+    <br>
+
 
 
 
@@ -77,48 +92,54 @@
         <div class="col-sm-10">
             <input
                 name="locale"
-                placeholder="e.g Hammamet"
+                placeholder="locale.."
                 type="text"
                 class="form-control"
-                required
+                
             />
         </div>
+
+        <div class="col-sm-10">
+    <div style="background-color:red" >    @error('locale')
+    {{$message}}
+    @enderror
+
+    </div>
+    </div>
+
     </div>
 
 
 
-    
-                                    
-                                
+    <br>
 
 
-
-
-
-
-
+   
 
 
     <div class="position-relative row form-group">
-        <label for="type" class="col-sm-2 col-form-label"
-            >Nom de type</label
-        >
-        <div class="col-sm-10">
-            <input
-                name="type"
-                placeholder="e.g SPA"
-                type="text"
-                class="form-control"
-                required
-            />
-        </div>
-    </div>
+    <label for="locale" class="col-sm-2 col-form-label">Type de centre</label>
+    <div class="col-sm-10">
+    <select class="form-control"name="type">
+            @foreach ($donnes as $key => $value)
+            <option value="{{$value->type}}">
+                {{ $value->type }}
+            </option>
+            @endforeach
+        </select>
+</div>
+</div>
 
 
 
 
 
 
+
+
+
+
+    <br>
 
 
 

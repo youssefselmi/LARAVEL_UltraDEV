@@ -106,41 +106,69 @@ Route::middleware('auth')->group(function() {
 
 
 
+ /////////////////// Type centre ////////////////////////////       
+
+Route::get('/typecentre', function () {
+    return view('typescentres.typescentre');
+});
+Route::get('/typecentre', [App\Http\Controllers\TypeCentreController::class, 'index']);
+Route::delete('/deletetype/{typecentre}', [App\Http\Controllers\TypeCentreController::class, 'destroy']);
+Route::post('/addtype', [App\Http\Controllers\TypeCentreController::class, 'add']);
+Route::get('/addtype', function () {
+    return view('typescentres.addtype');
+});
+
+///////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
 ///////////////////////////////// centres //////////////////////////////
 
 
 Route::get('/Centre', function () {
     return view('centres.centre');
 });
-
 Route::get('/Centre', [App\Http\Controllers\CentreController::class, 'index']);
 
 
+
+Route::post('/addcentre', [App\Http\Controllers\CentreController::class, 'add']);
+Route::get('/addcentre', function () {
+      $donnes = DB::table('type_centres')->get();
+   //  return dd($donnes);
+    return view('centres.addcentre',compact('donnes'));
+});
+
+
+
+Route::delete('/deletecentre/{centre}', [App\Http\Controllers\CentreController::class, 'destroy']);
+Route::get('/centre/{centre}/modifier', [App\Http\Controllers\CentreController::class, 'getUpdate']);
+Route::put('/centre/{centre}',[App\Http\Controllers\CentreController::class, 'update']);
+Route::get('/centredetail/{id}', function () {
+    return view('centres.centre');
+});
+Route::get('/centredetail/{id}', [App\Http\Controllers\CentreController::class, 'show']);
+    });
+});
+
+
+
+
+
+
+
+
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-Route::get('/typecentre', function () {
-    return view('typescentres.typescentre');
-});
-
-Route::get('/typecentre', [App\Http\Controllers\TypeCentreController::class, 'index']);
-
-Route::delete('/deletetype/{typecentre}', [App\Http\Controllers\TypeCentreController::class, 'destroy']);
-
-
-
-Route::post('/addtype', [App\Http\Controllers\TypeCentreController::class, 'add']);
-Route::get('/addtype', function () {
-    return view('typescentres.addtype');
-});
-
-
-
-
-
-
-/////////////////////////////////////////////////////////////////////////
 
 Route::get('/centregrid', function () {
     return view('centres.centregrid');
@@ -148,29 +176,8 @@ Route::get('/centregrid', function () {
 Route::get('/centregrid', [App\Http\Controllers\CentreController::class, 'index2'])->name("centregrid");
 
 
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
-
-Route::post('/addcentre', [App\Http\Controllers\CentreController::class, 'add']);
-Route::get('/addcentre', function () {
-    return view('centres.addcentre');
-});
-
-Route::delete('/deletecentre/{centre}', [App\Http\Controllers\CentreController::class, 'destroy']);
-
-
-Route::get('/centre/{centre}/modifier', [App\Http\Controllers\CentreController::class, 'getUpdate']);
-
-
-//Route::delete('/centre/{id}', 'destroy');
-
-
-Route::put('/centre/{centre}',[App\Http\Controllers\CentreController::class, 'update']);
-
-
-
-
-    });
-});

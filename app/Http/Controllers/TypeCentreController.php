@@ -31,7 +31,13 @@ class TypeCentreController extends Controller
     public function add(){
         $data = request()->validate([
             'type' =>'required'
-        ]);
+        ],
+        [
+            'type.required' =>'Remplir le type ',
+        ]
+    
+    
+    );
         \App\Models\TypeCentre::create([
           
             'type' => $data['type'],

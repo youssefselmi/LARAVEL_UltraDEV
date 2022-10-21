@@ -210,9 +210,9 @@
             <tr>
                 <th>ID</th>
                 <th>Nom</th>
+                <th>Image</th>
                 <th>Type</th>
                 <th>Locale</th>
-                <th>Image</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -246,8 +246,9 @@ height : 50px;
                 <td>
                     {{ $centre["type"] }}
                 </td>
-                <td>{{ $centre["locale"] }} H</td>
-            
+                <td>{{ $centre["locale"] }}</td>
+
+                
                 <td class="table-report__action w-56">
 
                             <!--    <div class="flex justify-center items-center">
@@ -314,6 +315,9 @@ height : 50px;
                         </button>
                     </form>
 
+
+
+                    <a href="{{ url('/centredetail/' . $centre->id) }}" title="View Student"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
 
 
 

@@ -17,10 +17,8 @@ return new class extends Migration
             $table->id();
             $table->String('nom');
             $table->String('type');
-            $table->String('locale');
-            
+            $table->String('locale');     
             $table->String('image');
-
             $table->timestamps();
         });
     }
