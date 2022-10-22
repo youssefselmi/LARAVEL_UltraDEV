@@ -14,7 +14,7 @@
 <h2 class="intro-y text-lg font-medium mt-10">Types Centres</h2>
 
 <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-<form class="edit-form" action="/addcentre" method="GET" >
+<form class="edit-form" action="/addtype" method="GET" >
 
 <button class="btn btn-primary shadow-md mr-2">Add New Type</button>
 </form>
@@ -207,7 +207,7 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Type</th>
+                 <th>Type</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -231,48 +231,10 @@
             
                 <td class="table-report__action w-56">
 
-                            <!--    <div class="flex justify-center items-center">
-                                    <form class="flex items-center mr-3" href="javascript:;"  >
-                                    <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
-                                    
-
-                                    </form>
-                                    <form class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"  action="/deletecentre/{{$centre->id}}" method="POST">
-                                    @csrf @method('DELETE')   
- 
-                                    <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
-                                    </form>
-
-
-                                </div>
-                          
--->
-
-                     <!--
-                                   <form
-                        class="delete-form"
-                        action="/deletecentre/{{$centre->id}}"
-                        method="POST"
-                    >
-                        @csrf @method('DELETE')
-
-                        <button
-                            onclick="document.querySelector('.delete-form').submit()"
-                            class="btn"
-                            style="color: rgb(255, 35, 35); font-size: 1.2rem"
-                            data-toggle="tooltip"
-                            data-placement="top"
-                            title="supprimer"
-                        >
-                        <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i>   
-                                          </button>
-                    </form>
-
--->
 
 <form
                         class="edit-form"
-                        action="/centre/{{ $centre['id'] }}/modifier"
+                        action="/typecentre/{{ $centre['id'] }}/modifiertype"
                         method="GET"
                     >
                         <button
@@ -286,9 +248,10 @@
                     </form>
 
 
+                            
 
 
-                    <form class="delete-form" action="/deletetype/{{$centre->id}}"method="POST">
+                    <form class="delete-form" action="/deletetype/{{$centre->id}}/{{$centre->type}}"method="POST">
                         @csrf @method('DELETE')
                         <button class="btn btn-danger" data-toggle="tooltip" data-placement="left" title="supprimer" >                    
                          <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i>   

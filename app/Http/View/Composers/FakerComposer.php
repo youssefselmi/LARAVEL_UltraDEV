@@ -60,7 +60,7 @@ class FakerComposer
     }
 
     public function fakeImages()
-    {
+    {  
         $photos = [];
         for ($i = 0; $i < 15; $i++) {
             $photos[] = 'preview-' . rand(1, 15) . '.jpg';

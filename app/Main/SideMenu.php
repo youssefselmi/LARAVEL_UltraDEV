@@ -53,14 +53,28 @@ class SideMenu
             ],
             'centres' => [
                 'icon' => 'inbox',
-                'route_name' => 'centregrid',
-              //  'route' => '/Centre',
-
+                'route_name' => 'centres',
                 'params' => [
                     'layout' => 'side-menu'
                 ],
                 'title' => 'Les Centres'
             ],
+
+
+            'types' => [
+                'icon' => 'inbox',
+                'route_name' => 'typecentre',        
+                'params' => [
+                    'layout' => 'side-menu'
+                ],
+                'title' => 'Types des centres'
+            ],
+
+
+
+
+
+
 
 
             'menu-layout' => [
