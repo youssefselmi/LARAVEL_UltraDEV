@@ -46,7 +46,6 @@
                 class="form-control"
                 required
             />
-            <div class="invalid-feedback">Veuillez entrer un valid nom</div>
         </div>
     </div>
     <div class="position-relative row form-group">
@@ -66,22 +65,42 @@
     </div>
 
 
+
+
+
+    
+
+
+    
     <div class="position-relative row form-group">
-        <label for="type" class="col-sm-2 col-form-label"
-            >Type de centre</label
-        >
-        <div class="col-sm-10">
-            <input
-                value="{{$centre->type}}"
-                name="type"
-                placeholder="e.g Tomorrowland"
-                type="text"
-                class="form-control"
-                required
-            />
-            <div class="invalid-feedback">Veuillez entrer un valid type</div>
-        </div>
-    </div>
+    <label for="locale" class="col-sm-2 col-form-label">Type de centre</label>
+    <div class="col-sm-10">
+    <select class="form-control"name="type_id">
+            @foreach ($les as $key => $value)
+            <option value="{{$value->id}}">
+                {{ $value->type }}
+            </option>
+            @endforeach
+        </select>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

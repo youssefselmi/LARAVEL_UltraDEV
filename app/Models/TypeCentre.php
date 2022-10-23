@@ -14,4 +14,9 @@ class TypeCentre extends Model
     protected $fillable = [
         'type'
     ];
+
+    public function centres()
+    {
+        return $this->hasMany(Centre::class);
+    }
 }

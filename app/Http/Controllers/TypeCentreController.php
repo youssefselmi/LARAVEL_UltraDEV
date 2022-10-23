@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\CentreController;
 use Illuminate\Support\Facades\DB;
 
+use App\Events\NoticeEvent;
+
 class TypeCentreController extends Controller
 {
     //
@@ -20,23 +22,24 @@ class TypeCentreController extends Controller
 
 
 
+
     public function destroy(TypeCentre $typecentre) {
         
 
-       $typecentre->delete();
 
        $donnes = DB::table('centres')->get();
 
        foreach ($donnes as $lestypes) {
 
-        if($lestypes->type==$typecentre->type){
+        if($lestypes->type_id==$typecentre->id){
             
          //   $lestypes->delete();    
-            DB::table('centres')->where('type',$typecentre->type)->delete();
+            DB::table('centres')->where('type_id',$typecentre->id)->delete();
         }
     }
 
 
+    $typecentre->delete();
 
         return redirect('/typecentre');
         
@@ -48,6 +51,9 @@ class TypeCentreController extends Controller
 
 
     public function add(){
+
+
+
         $data = request()->validate([
             'type' =>'required'
         ],
@@ -68,7 +74,8 @@ class TypeCentreController extends Controller
 
 
     public function create(){
-        return view('typescentres.addtype');
+        return view('typescentres.addtype')->withSuccess(__('Post delete successfully.'));
+;
     }
 
 
@@ -103,6 +110,7 @@ class TypeCentreController extends Controller
         $typecentre->update([
             'type' => $data['type'],
         ]);
+
 
         return redirect('/typecentre');
     }

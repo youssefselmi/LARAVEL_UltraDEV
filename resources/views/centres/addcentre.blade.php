@@ -120,9 +120,9 @@
     <div class="position-relative row form-group">
     <label for="locale" class="col-sm-2 col-form-label">Type de centre</label>
     <div class="col-sm-10">
-    <select class="form-control"name="type">
+    <select class="form-control"name="type_id">
             @foreach ($donnes as $key => $value)
-            <option value="{{$value->type}}">
+            <option value="{{$value->id}}">
                 {{ $value->type }}
             </option>
             @endforeach

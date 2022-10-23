@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('centres', function (Blueprint $table) {
             $table->id();
             $table->String('nom');
-            $table->String('type');
+            $table->foreignId('type_id')->on('typecentres')->onDelete('cascade')->onUpdate('cascade');
             $table->String('locale');     
             $table->String('image');
             $table->timestamps();

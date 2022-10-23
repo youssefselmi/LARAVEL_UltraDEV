@@ -16,7 +16,7 @@
 <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
 <form class="edit-form" action="/addtype" method="GET" >
 
-<button class="btn btn-primary shadow-md mr-2">Add New Type</button>
+<button class="btn btn-primary shadow-md mr-2">Ajouter un type de centre</button>
 </form>
 <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
@@ -119,12 +119,7 @@
         style="width: 20rem; transition: opacity 0.5s"
         id="{{ $centre->id }}"
     >
-        <img
-            class="card-img-top"
-            src="{{ 'storage/imgs/'.$centre['image'] }}"
-            alt="evenement photo"
-            style="max-height: 15rem; object-fit: cover"
-        />
+      
         <div class="card-body">
           
             <p class="card-text text-muted text-truncate">
@@ -251,7 +246,7 @@
                             
 
 
-                    <form class="delete-form" action="/deletetype/{{$centre->id}}/{{$centre->type}}"method="POST">
+                    <form class="delete-form" action="/deletetype/{{$centre->id}}"method="POST">
                         @csrf @method('DELETE')
                         <button class="btn btn-danger" data-toggle="tooltip" data-placement="left" title="supprimer" >                    
                          <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i>   
@@ -278,7 +273,9 @@
         </tbody>
         @endif
     </table>
+    
 </div>
+
 
 <script>
     document.querySelector("a#evenement-list").classList.add("mm-active");

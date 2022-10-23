@@ -109,10 +109,13 @@ Route::middleware('auth')->group(function() {
  /////////////////// Type centre ////////////////////////////       
 
 Route::get('/typecentre', function () {
+    
     return view('typescentres.typescentre');
+
+
 });
 Route::get('/typecentre', [App\Http\Controllers\TypeCentreController::class, 'index'])->name("typecentre");
-Route::delete('/deletetype/{typecentre}/{type}', [App\Http\Controllers\TypeCentreController::class, 'destroy']);
+Route::delete('/deletetype/{typecentre}', [App\Http\Controllers\TypeCentreController::class, 'destroy']);
 Route::post('/addtype', [App\Http\Controllers\TypeCentreController::class, 'add']);
 Route::get('/addtype', function () {
     return view('typescentres.addtype');
@@ -139,16 +142,19 @@ Route::put('/typecentre/{typecentre}',[App\Http\Controllers\TypeCentreController
 
 
 Route::get('/Centre', function () {
-    return view('centres.centre');
+    
+  //  $les = DB::table('type_centres')->get();
+   //  return dd($les);
+   return view('centres.centre',compact('les'));
 });
-Route::get('/Centre', [App\Http\Controllers\CentreController::class, 'index'])->name("centres");;
+Route::get('/Centre', [App\Http\Controllers\CentreController::class, 'index'])->name("centres");
  
 
 
 Route::post('/addcentre', [App\Http\Controllers\CentreController::class, 'add']);
 Route::get('/addcentre', function () {
       $donnes = DB::table('type_centres')->get();
-   //  return dd($donnes);
+  //  return dd($donnes);
     return view('centres.addcentre',compact('donnes'));
 });
 

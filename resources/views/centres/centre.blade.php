@@ -8,16 +8,16 @@
 
 
 
-
-
+@include('toastr')
 
 <h2 class="intro-y text-lg font-medium mt-10">Centres</h2>
 
 <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
 <form class="edit-form" action="/addcentre" method="GET" >
 
-<button class="btn btn-primary shadow-md mr-2">Add New Product</button>
+<button class="btn btn-primary shadow-md mr-2">Ajouter un centre</button>
 </form>
+
 <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center">
@@ -79,7 +79,10 @@
             class="btn-group-sm btn-group btn-group-toggle"
             data-toggle="buttons"
         >
-            <label
+
+        <form class="edit-form" action="/centregrid" method="GET" >
+
+            <button
                 onclick="toGrid()"
                 class="btn btn-outline-primary p-2 btn-transition"
             >
@@ -90,11 +93,15 @@
                     autocomplete="off"
                 />
                 Grid
-            </label>
-            <label
-                onclick="toList()"
-                class="btn btn-outline-primary p-2 btn-transition focus active"
-            >
+            </button>
+</form>
+
+
+
+
+           <button> <label onclick="toList()"
+                class="btn btn-outline-primary p-2 btn-transition focus active" > 
+
                 <input
                     type="radio"
                     name="options"
@@ -103,6 +110,10 @@
                 />
                 List
             </label>
+            </button>
+
+
+            
         </div>
     </div>
 </div>
@@ -130,7 +141,7 @@
                 {{ $centre["nom"] }}
             </h5>
             <p class="card-text text-muted text-truncate">
-                {{ $centre["type"] }}
+                {{ $centre["type_id"] }}
             </p>
             <div
                 class="actions"
@@ -243,9 +254,51 @@
 height : 50px;
             "
         />                </td>
-                <td>
-                    {{ $centre["type"] }}
+
+
+
+
+
+
+     
+
+            <td>
+            @foreach ($less as $key => $value)
+
+  @if($value->id==$centre["type_id"])
+
+
+            {{ $value->type }}    
+            
+       
+            
+        
+        @endif
+
+@endforeach
+               
+
                 </td>
+          
+
+
+
+        
+        
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <td>{{ $centre["locale"] }}</td>
 
                 

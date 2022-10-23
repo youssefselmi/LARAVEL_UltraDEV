@@ -15,7 +15,10 @@ class CentreController extends Controller
     
     public function index()
     {
-        return view('centres.centre', [ 'centres' => \App\Models\Centre::all() ]);
+          $less = DB::table('type_centres')->get();
+        //    return dd($less);
+     //   $les = DB::table('type_centres')->get();
+        return view('centres.centre', [ 'centres' => \App\Models\Centre::all() ], compact('less'));
     }
 
 
@@ -51,14 +54,14 @@ class CentreController extends Controller
             'nom' =>'required',
             'image' => ['required', 'image'],
             'locale' =>'required',
-            'type' =>'required',
+            'type_id' =>'required',
         ],
         
         [
             'nom.required' =>'Remplir le nom ',
             'locale.required' =>'Remplir la locale ',
             'image.required' =>'Remplir image ',
-            'type.required' =>'Remplir le type ',      
+            'type_id.required' =>'Remplir le type ',      
         ]  
     );
         request()->file('image')->move(
@@ -70,7 +73,7 @@ class CentreController extends Controller
             'nom' => $data['nom'],
             'image' => $data['image']->getClientOriginalName(),
             'locale' => $data['locale'],
-            'type' => $data['type'],
+            'type_id' => $data['type_id'],
         ]);
 
 
@@ -92,7 +95,7 @@ class CentreController extends Controller
 
 
     public function destroy(Centre $centre) {
-        
+
         $centre->delete();
         return redirect('/Centre');
 
@@ -107,7 +110,9 @@ class CentreController extends Controller
 
 
     public function getUpdate(Centre $centre){
-        return view('centres.modifiercentre', compact('centre'));
+         $les = DB::table('type_centres')->get();
+        //return dd($les);
+        return view('centres.modifiercentre', compact('centre'), compact('les'));
     }
 
     public function update(Centre $centre,Request $request){
@@ -116,13 +121,13 @@ class CentreController extends Controller
             'nom' =>'required',
             'image' => ['required', 'image'],
             'locale' =>'required',
-            'type' =>'required',
+            'type_id' =>'required',
         ],
         
         [
             'nom.required' =>'Remplir le nom ',
             'locale.required' =>'Remplir la locale ',
-            'type.required' =>'Remplir le type ',      
+            'type_id.required' =>'Remplir le type ',      
         ]  
     );
 
@@ -141,7 +146,7 @@ class CentreController extends Controller
             'nom' => $data['nom'],
             'image' => $path,
             'locale' => $data['locale'],
-            'type' => $data['type'],
+            'type_id' => $data['type_id'],
         ]);
 
         return redirect('/Centre');

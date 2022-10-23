@@ -5,15 +5,39 @@
 @endsection
 
 @section('subcontent')
+
+
+
+
+
+
+
+
     <h2 class="intro-y text-lg font-medium mt-10">Centre Grid</h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
 
+        
 
         <form class="edit-form" action="/addcentre" method="GET" >
 
             <button class="btn btn-primary shadow-md mr-2">Add New Product</button>
 </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             <div class="dropdown">
@@ -51,6 +75,28 @@
             </div>
         </div>
         <!-- BEGIN: Users Layout -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         @foreach ($centres as $centre)
 
 

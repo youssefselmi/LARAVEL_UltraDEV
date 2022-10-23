@@ -11,10 +11,25 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">Point of Sale</h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-            <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#new-order-modal" class="btn btn-primary shadow-md mr-2">New Order</a>
+            <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#new-order-modal" class="btn btn-primary shadow-md mr-2">Show More about centre {{ $centres->nom }}</a>
             <div class="pos-dropdown dropdown ml-auto sm:ml-0">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center">
@@ -50,6 +65,30 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  <!-- BEGIN: New Order Modal -->
  <div id="new-order-modal" class="modal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
@@ -63,7 +102,7 @@
         <h2>Simple QR Code</h2>
     </div>
     <div class="card-body">
-        {!! QrCode::size(300)->generate("https://www.google.com/search?q=$centres->nom $centres->locale ") !!}
+        {!! QrCode::size(300)->generate("https://www.google.com/search?q=Centre $centres->nom $centres->locale ") !!}
     </div>
 </div>
 
@@ -97,12 +136,33 @@
 
 
 
+ <!-- BEGIN: Profile Info -->
+    <div class="intro-y box px-5 pt-5 mt-5">
+        <div class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5 -mx-5">
+          
+            <div class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
+                <div class="font-medium text-center lg:text-left lg:mt-3">centre Details</div>
+                <div class="flex flex-col justify-center items-center lg:items-start mt-4">
+                 
+                    <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                        Centre : {{ $centres->nom }}
+                    </div>
+                    <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                    Lieu : {{ $centres->locale }}
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+     
+    </div>
+    <!-- END: Profile Info -->
 
 
 
 
-
-
+<br><br><br>
 
 
 
@@ -113,21 +173,6 @@
 
 <!--  ////////////////////////////////////////////////////////////////////////////////////////////////////////   -->
  
-<div class="card">
-  <div class="card-header">Centres Page</div>
-  <div class="card-body">   
-        
-        <div class="card-body">
-        <h5 class="card-title">Name : {{ $centres->nom }}</h5>
-        <p class="card-text">Address : {{ $centres->type }}</p>
-        <p class="card-text">Mobile : {{ $centres->locale }}</p>
-  </div>
-      
-    </hr>
-  
-  </div>
-</div>
-
 
 
 

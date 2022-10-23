@@ -15,6 +15,11 @@ class Centre extends Model
         'nom',
         'image',
         'locale',
-        'type'
+        'type_id'
     ];
+
+    public function types()
+    {
+        return $this->belongsTo(TypeCentre::class);
+    }
 }
