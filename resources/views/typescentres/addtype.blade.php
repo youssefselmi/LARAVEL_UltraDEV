@@ -51,12 +51,11 @@
         </div>
 
         
-    <div class="col-sm-10">
-    <div style="background-color:red" >
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
     @error('type')
+    <strong>Erreur</strong>
     {{$message}}
     @enderror
-    </div>
     </div>
 
 

@@ -36,21 +36,29 @@
         </div>
 
 
-    <div class="col-sm-10">
-    <div style="background-color:red" >
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
     @error('nom')
+    <strong>Erreur</strong>
     {{$message}}
     @enderror
-
-    </div>
     </div>
 
 
     </div>
-
-
     <br>
 
+
+
+    
+                                    
+                                        
+                                
+
+
+
+
+
+    
    
     <div class="position-relative row form-group">
         <label for="image" class="col-sm-2 col-form-label">Photo</label>
@@ -66,13 +74,20 @@
         
         </div>
 
-        <div class="col-sm-10">
-    <div style="background-color:red" >    @error('image')
+
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    @error('image')
+    <strong>Erreur</strong>
     {{$message}}
     @enderror
     </div>
 
-    </div>
+
+
+
+
+
+
     </div>                     
 
 
@@ -99,12 +114,11 @@
             />
         </div>
 
-        <div class="col-sm-10">
-    <div style="background-color:red" >    @error('locale')
+           <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    @error('locale')
+    <strong>Erreur</strong>
     {{$message}}
     @enderror
-
-    </div>
     </div>
 
     </div>
