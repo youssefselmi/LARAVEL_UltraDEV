@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\DarkModeController;
+use App\Http\Controllers\ColorSchemeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,68 +17,143 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-$controller_path = 'App\Http\Controllers';
+Route::get('dark-mode-switcher', [DarkModeController::class, 'switch'])->name('dark-mode-switcher');
+Route::get('color-scheme-switcher/{color_scheme}', [ColorSchemeController::class, 'switch'])->name('color-scheme-switcher');
 
-// Main Page Route
-Route::get('/', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
+Route::controller(AuthController::class)->middleware('loggedin')->group(function() {
+    Route::get('login', 'loginView')->name('login.index');
+    Route::post('login', 'login')->name('login.check');
+});
 
-// layout
-Route::get('/layouts/without-menu', $controller_path . '\layouts\WithoutMenu@index')->name('layouts-without-menu');
-Route::get('/layouts/without-navbar', $controller_path . '\layouts\WithoutNavbar@index')->name('layouts-without-navbar');
-Route::get('/layouts/fluid', $controller_path . '\layouts\Fluid@index')->name('layouts-fluid');
-Route::get('/layouts/container', $controller_path . '\layouts\Container@index')->name('layouts-container');
-Route::get('/layouts/blank', $controller_path . '\layouts\Blank@index')->name('layouts-blank');
+Route::middleware('auth')->group(function() {
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::controller(PageController::class)->group(function() {
+        Route::get('/', 'dashboardOverview1')->name('dashboard-overview-1');
+        Route::get('dashboard-overview-2-page', 'dashboardOverview2')->name('dashboard-overview-2');
+        Route::get('dashboard-overview-3-page', 'dashboardOverview3')->name('dashboard-overview-3');
+        Route::get('dashboard-overview-4-page', 'dashboardOverview4')->name('dashboard-overview-4');
+        Route::get('categories-page', 'categories')->name('categories');
+        Route::get('add-product-page', 'addProduct')->name('add-product');
+        Route::get('product-list-page', 'productList')->name('product-list');
+        Route::get('product-grid-page', 'productGrid')->name('product-grid');
+        Route::get('transaction-list-page', 'transactionList')->name('transaction-list');
+        Route::get('transaction-detail-page', 'transactionDetail')->name('transaction-detail');
+        Route::get('seller-list-page', 'sellerList')->name('seller-list');
+        Route::get('seller-detail-page', 'sellerDetail')->name('seller-detail');
+        Route::get('reviews-page', 'reviews')->name('reviews');
+        Route::get('inbox-page', 'inbox')->name('inbox');
+        Route::get('file-manager-page', 'fileManager')->name('file-manager');
+        Route::get('point-of-sale-page', 'pointOfSale')->name('point-of-sale');
+        Route::get('chat-page', 'chat')->name('chat');
+        Route::get('post-page', 'post')->name('post');
+        Route::get('calendar-page', 'calendar')->name('calendar');
+        Route::get('crud-data-list-page', 'crudDataList')->name('crud-data-list');
+        Route::get('crud-form-page', 'crudForm')->name('crud-form');
+        Route::get('users-layout-1-page', 'usersLayout1')->name('users-layout-1');
+        Route::get('users-layout-2-page', 'usersLayout2')->name('users-layout-2');
+        Route::get('users-layout-3-page', 'usersLayout3')->name('users-layout-3');
+        Route::get('profile-overview-1-page', 'profileOverview1')->name('profile-overview-1');
+        Route::get('profile-overview-2-page', 'profileOverview2')->name('profile-overview-2');
+        Route::get('profile-overview-3-page', 'profileOverview3')->name('profile-overview-3');
+        Route::get('wizard-layout-1-page', 'wizardLayout1')->name('wizard-layout-1');
+        Route::get('wizard-layout-2-page', 'wizardLayout2')->name('wizard-layout-2');
+        Route::get('wizard-layout-3-page', 'wizardLayout3')->name('wizard-layout-3');
+        Route::get('blog-layout-1-page', 'blogLayout1')->name('blog-layout-1');
+        Route::get('blog-layout-2-page', 'blogLayout2')->name('blog-layout-2');
+        Route::get('blog-layout-3-page', 'blogLayout3')->name('blog-layout-3');
+        Route::get('pricing-layout-1-page', 'pricingLayout1')->name('pricing-layout-1');
+        Route::get('pricing-layout-2-page', 'pricingLayout2')->name('pricing-layout-2');
+        Route::get('invoice-layout-1-page', 'invoiceLayout1')->name('invoice-layout-1');
+        Route::get('invoice-layout-2-page', 'invoiceLayout2')->name('invoice-layout-2');
+        Route::get('faq-layout-1-page', 'faqLayout1')->name('faq-layout-1');
+        Route::get('faq-layout-2-page', 'faqLayout2')->name('faq-layout-2');
+        Route::get('faq-layout-3-page', 'faqLayout3')->name('faq-layout-3');
+        Route::get('login-page', 'login')->name('login');
+        Route::get('register-page', 'register')->name('register');
+        Route::get('error-page-page', 'errorPage')->name('error-page');
+        Route::get('update-profile-page', 'updateProfile')->name('update-profile');
+        Route::get('change-password-page', 'changePassword')->name('change-password');
+        Route::get('regular-table-page', 'regularTable')->name('regular-table');
+        Route::get('tabulator-page', 'tabulator')->name('tabulator');
+        Route::get('modal-page', 'modal')->name('modal');
+        Route::get('slide-over-page', 'slideOver')->name('slide-over');
+        Route::get('notification-page', 'notification')->name('notification');
+        Route::get('tab-page', 'tab')->name('tab');
+        Route::get('accordion-page', 'accordion')->name('accordion');
+        Route::get('button-page', 'button')->name('button');
+        Route::get('alert-page', 'alert')->name('alert');
+        Route::get('progress-bar-page', 'progressBar')->name('progress-bar');
+        Route::get('tooltip-page', 'tooltip')->name('tooltip');
+        Route::get('dropdown-page', 'dropdown')->name('dropdown');
+        Route::get('typography-page', 'typography')->name('typography');
+        Route::get('icon-page', 'icon')->name('icon');
+        Route::get('loading-icon-page', 'loadingIcon')->name('loading-icon');
+        Route::get('regular-form-page', 'regularForm')->name('regular-form');
+        Route::get('datepicker-page', 'datepicker')->name('datepicker');
+        Route::get('tom-select-page', 'tomSelect')->name('tom-select');
+        Route::get('file-upload-page', 'fileUpload')->name('file-upload');
+        Route::get('wysiwyg-editor-classic', 'wysiwygEditorClassic')->name('wysiwyg-editor-classic');
+        Route::get('wysiwyg-editor-inline', 'wysiwygEditorInline')->name('wysiwyg-editor-inline');
+        Route::get('wysiwyg-editor-balloon', 'wysiwygEditorBalloon')->name('wysiwyg-editor-balloon');
+        Route::get('wysiwyg-editor-balloon-block', 'wysiwygEditorBalloonBlock')->name('wysiwyg-editor-balloon-block');
+        Route::get('wysiwyg-editor-document', 'wysiwygEditorDocument')->name('wysiwyg-editor-document');
+        Route::get('validation-page', 'validation')->name('validation');
+        Route::get('chart-page', 'chart')->name('chart');
+        Route::get('slider-page', 'slider')->name('slider');
+        Route::get('image-zoom-page', 'imageZoom')->name('image-zoom');
+    
+    
+ /////////////////// Session ////////////////////////////       
 
-// pages
-Route::get('/pages/account-settings-account', $controller_path . '\pages\AccountSettingsAccount@index')->name('pages-account-settings-account');
-Route::get('/pages/account-settings-notifications', $controller_path . '\pages\AccountSettingsNotifications@index')->name('pages-account-settings-notifications');
-Route::get('/pages/account-settings-connections', $controller_path . '\pages\AccountSettingsConnections@index')->name('pages-account-settings-connections');
-Route::get('/pages/misc-error', $controller_path . '\pages\MiscError@index')->name('pages-misc-error');
-Route::get('/pages/misc-under-maintenance', $controller_path . '\pages\MiscUnderMaintenance@index')->name('pages-misc-under-maintenance');
+Route::get('/session', function () {
+    
+    return view('sessions.session');
 
-// authentication
-Route::get('/auth/login-basic', $controller_path . '\authentications\LoginBasic@index')->name('auth-login-basic');
-Route::get('/auth/register-basic', $controller_path . '\authentications\RegisterBasic@index')->name('auth-register-basic');
-Route::get('/auth/forgot-password-basic', $controller_path . '\authentications\ForgotPasswordBasic@index')->name('auth-reset-password-basic');
 
-// cards
-Route::get('/cards/basic', $controller_path . '\cards\CardBasic@index')->name('cards-basic');
+});
+Route::get('/session', [App\Http\Controllers\SessionController::class, 'index'])->name("session");
+Route::delete('/deletesession/{session}', [App\Http\Controllers\SessionController::class, 'destroy']);
+Route::post('/addsession', [App\Http\Controllers\SessionController::class, 'add']);
+Route::get('/addsession', function () {
+    return view('sessions.addsession');
+});
 
-// User Interface
-Route::get('/ui/accordion', $controller_path . '\user_interface\Accordion@index')->name('ui-accordion');
-Route::get('/ui/alerts', $controller_path . '\user_interface\Alerts@index')->name('ui-alerts');
-Route::get('/ui/badges', $controller_path . '\user_interface\Badges@index')->name('ui-badges');
-Route::get('/ui/buttons', $controller_path . '\user_interface\Buttons@index')->name('ui-buttons');
-Route::get('/ui/carousel', $controller_path . '\user_interface\Carousel@index')->name('ui-carousel');
-Route::get('/ui/collapse', $controller_path . '\user_interface\Collapse@index')->name('ui-collapse');
-Route::get('/ui/dropdowns', $controller_path . '\user_interface\Dropdowns@index')->name('ui-dropdowns');
-Route::get('/ui/footer', $controller_path . '\user_interface\Footer@index')->name('ui-footer');
-Route::get('/ui/list-groups', $controller_path . '\user_interface\ListGroups@index')->name('ui-list-groups');
-Route::get('/ui/modals', $controller_path . '\user_interface\Modals@index')->name('ui-modals');
-Route::get('/ui/navbar', $controller_path . '\user_interface\Navbar@index')->name('ui-navbar');
-Route::get('/ui/offcanvas', $controller_path . '\user_interface\Offcanvas@index')->name('ui-offcanvas');
-Route::get('/ui/pagination-breadcrumbs', $controller_path . '\user_interface\PaginationBreadcrumbs@index')->name('ui-pagination-breadcrumbs');
-Route::get('/ui/progress', $controller_path . '\user_interface\Progress@index')->name('ui-progress');
-Route::get('/ui/spinners', $controller_path . '\user_interface\Spinners@index')->name('ui-spinners');
-Route::get('/ui/tabs-pills', $controller_path . '\user_interface\TabsPills@index')->name('ui-tabs-pills');
-Route::get('/ui/toasts', $controller_path . '\user_interface\Toasts@index')->name('ui-toasts');
-Route::get('/ui/tooltips-popovers', $controller_path . '\user_interface\TooltipsPopovers@index')->name('ui-tooltips-popovers');
-Route::get('/ui/typography', $controller_path . '\user_interface\Typography@index')->name('ui-typography');
+     
 
-// extended ui
-Route::get('/extended/ui-perfect-scrollbar', $controller_path . '\extended_ui\PerfectScrollbar@index')->name('extended-ui-perfect-scrollbar');
-Route::get('/extended/ui-text-divider', $controller_path . '\extended_ui\TextDivider@index')->name('extended-ui-text-divider');
+Route::get('/session/{session}/modifiersession', [App\Http\Controllers\SessionController::class, 'getUpdate']);
+Route::put('/session/{session}',[App\Http\Controllers\SessionController::class, 'update']);
+        /////////////// formations /////////////////////
+    
+Route::get('/formation', function () {
+    
+    //  $les = DB::table('type_centres')->get();
+     //  return dd($les);
+     return view('formations.formation'/* ,compact('les') */);
+  });
+  Route::get('/formation', [App\Http\Controllers\FormationController::class, 'index'])->name("formations");
+   
+  
+  
+  Route::post('/addformation', [App\Http\Controllers\FormationController::class, 'add']);
+  Route::get('/addformation', function () {
+        $donnes = DB::table('sessions')->get();
+    //  return dd($donnes);
+      return view('formations.addformation',compact('donnes'));
+  });
+  
+  
+  
+  Route::delete('/deleteformation/{formation}', [App\Http\Controllers\FormationController::class, 'destroy']);
+  Route::get('/formation/{formation}/modifier', [App\Http\Controllers\FormationController::class, 'getUpdate']);
+  Route::put('/formation/{formation}',[App\Http\Controllers\FormationController::class, 'update']);
+  Route::get('/formationdetail/{id}', function () {
+      return view('formations.formation');
+  });
+  Route::get('/formationdetail/{id}', [App\Http\Controllers\FormationController::class, 'show']);
+      });
+    
+    
+    
+    
+    });
 
-// icons
-Route::get('/icons/boxicons', $controller_path . '\icons\Boxicons@index')->name('icons-boxicons');
-
-// form elements
-Route::get('/forms/basic-inputs', $controller_path . '\form_elements\BasicInput@index')->name('forms-basic-inputs');
-Route::get('/forms/input-groups', $controller_path . '\form_elements\InputGroups@index')->name('forms-input-groups');
-
-// form layouts
-Route::get('/form/layouts-vertical', $controller_path . '\form_layouts\VerticalForm@index')->name('form-layouts-vertical');
-Route::get('/form/layouts-horizontal', $controller_path . '\form_layouts\HorizontalForm@index')->name('form-layouts-horizontal');
-
-// tables
-Route::get('/tables/basic', $controller_path . '\tables\Basic@index')->name('tables-basic');
