@@ -46,12 +46,18 @@
                 class="form-control"
                 required
             />
-            <div class="invalid-feedback">Veuillez entrer un valid nom</div>
         </div>
     </div>
  
 
   
+    
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    @error('type')
+    <strong>Erreur</strong>
+    {{$message}}
+    @enderror
+    </div>
 
 
 

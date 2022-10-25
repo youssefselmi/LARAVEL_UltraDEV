@@ -50,7 +50,21 @@ class SideMenu
                         'title' => 'Overview 4'
                     ]
                 ]
+
+
+                
             ],
+
+            'front' => [
+                'icon' => 'inbox',
+                'route_name' => 'front',        
+                'params' => [
+                    'layout' => 'side-menu'
+                ],
+                'title' => 'Front Office'
+            ],
+
+
             'centres' => [
                 'icon' => 'inbox',
                 'route_name' => 'centres',
@@ -69,6 +83,7 @@ class SideMenu
                 ],
                 'title' => 'Types des centres'
             ],
+
 
 
 

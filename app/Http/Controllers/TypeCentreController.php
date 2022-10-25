@@ -55,10 +55,13 @@ class TypeCentreController extends Controller
 
 
         $data = request()->validate([
-            'type' =>'required'
+            'type' =>'required|alpha|min:2",'
         ],
         [
             'type.required' =>'Remplir le type ',
+            'type.min' =>'Taille minimale 2 caractere',
+            'type.alpha' =>'Type doit contenir seulement des caracteres',
+
         ]
     
     
@@ -98,11 +101,14 @@ class TypeCentreController extends Controller
     public function update(TypeCentre $typecentre,Request $request){
 
         $data = $request->validate([
-            'type' =>'required',
+            'type' =>'required|alpha|min:2",'
         ],
-        
+             
         [
-            'type.required' =>'Remplir le type ',      
+            'type.required' =>'Remplir le type ',
+            'type.min' =>'Taille minimale 2 caractere',
+            'type.alpha' =>'Type doit contenir seulement des caracteres',
+
         ]  
     );
 

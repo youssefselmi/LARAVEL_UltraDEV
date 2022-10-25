@@ -7,6 +7,8 @@ use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\CentreController;
 use App\Http\Controllers\TypeCentreController;
+use App\Http\Controllers\Frontofficecontroller;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -115,6 +117,8 @@ Route::get('/typecentre', function () {
 
 });
 Route::get('/typecentre', [App\Http\Controllers\TypeCentreController::class, 'index'])->name("typecentre");
+
+
 Route::delete('/deletetype/{typecentre}', [App\Http\Controllers\TypeCentreController::class, 'destroy']);
 Route::post('/addtype', [App\Http\Controllers\TypeCentreController::class, 'add']);
 Route::get('/addtype', function () {
@@ -167,6 +171,9 @@ Route::get('/centredetail/{id}', function () {
     return view('centres.centre');
 });
 Route::get('/centredetail/{id}', [App\Http\Controllers\CentreController::class, 'show']);
+
+Route::get('/centredetailfront/{id}', [App\Http\Controllers\Frontofficecontroller::class, 'showfront']);
+
     });
 });
 
@@ -192,3 +199,10 @@ Route::get('/centregrid', [App\Http\Controllers\CentreController::class, 'index2
 
 
 
+
+Route::get('/frontoffice', function () {
+    
+    return view('frontoffice.indexfront');
+
+});
+Route::get('/frontoffice', [App\Http\Controllers\Frontofficecontroller::class, 'indexfront'])->name("front");;

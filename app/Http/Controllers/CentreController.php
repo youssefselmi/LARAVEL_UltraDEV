@@ -51,17 +51,22 @@ class CentreController extends Controller
 
 
         $data = request()->validate([
-            'nom' =>'required',
+            'nom' =>'required|alpha|min:2',
             'image' => ['required', 'image'],
-            'locale' =>'required',
-            'type_id' =>'required',
+            'locale' =>'required|alpha|min:2',
+            'type_id' =>'',
         ],
         
         [
             'nom.required' =>'Remplir le nom ',
             'locale.required' =>'Remplir la locale ',
             'image.required' =>'Remplir image ',
-            'type_id.required' =>'Remplir le type ',      
+            
+            
+            'locale.alpha' =>'Locale ne doit pas contenir des caracteres speciaux ',
+            'nom.alpha' =>'Locale ne doit pas contenir des caracteres speciaux ',
+
+
         ]  
     );
         request()->file('image')->move(
@@ -118,16 +123,20 @@ class CentreController extends Controller
     public function update(Centre $centre,Request $request){
 
         $data = $request->validate([
-            'nom' =>'required',
+            'nom' =>'required|alpha|min:2',
             'image' => ['required', 'image'],
-            'locale' =>'required',
-            'type_id' =>'required',
+            'locale' =>'required|alpha|min:2',
+            'type_id' =>'',
         ],
         
         [
             'nom.required' =>'Remplir le nom ',
-            'locale.required' =>'Remplir la locale ',
-            'type_id.required' =>'Remplir le type ',      
+            'locale.required' =>'Remplir la localisation ',
+            'image.required' =>'Remplir image ',
+            
+            
+            'locale.alpha' =>'Locale ne doit pas contenir des caracteres speciaux ',
+            'nom.alpha' =>'Locale ne doit pas contenir des caracteres speciaux ',   
         ]  
     );
 
