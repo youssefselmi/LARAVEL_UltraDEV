@@ -87,6 +87,29 @@ class SideMenu
 
 
 
+            'formations' => [
+                'icon' => 'inbox',
+                'route_name' => 'formations',
+                'params' => [
+                    'layout' => 'side-menu'
+                ],
+                'title' => 'Les Formations'
+            ],
+            'session' => [
+                'icon' => 'inbox',
+                'route_name' => 'session',
+                'params' => [
+                    'layout' => 'side-menu'
+                ],
+                'title' => 'Les Sessions'
+            ],
+
+
+
+
+
+
+
 
 
 

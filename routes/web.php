@@ -197,12 +197,65 @@ Route::get('/centregrid', [App\Http\Controllers\CentreController::class, 'index2
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-
-Route::get('/frontoffice', function () {
-    
+Route::get('/frontoffice', function () {  
     return view('frontoffice.indexfront');
 
 });
-Route::get('/frontoffice', [App\Http\Controllers\Frontofficecontroller::class, 'indexfront'])->name("front");;
+Route::get('/frontoffice', [App\Http\Controllers\Frontofficecontroller::class, 'indexfront'])->name("front");
+
+
+
+
+
+
+
+///////////////////////////////////////////// route jalel //////////////////////////////////
+
+/////////////////// Session ////////////////////////////       
+
+Route::get('/session', function () {
+    
+    return view('sessions.session');
+
+
+});
+Route::get('/session', [App\Http\Controllers\SessionController::class, 'index'])->name("session");
+Route::delete('/deletesession/{session}', [App\Http\Controllers\SessionController::class, 'destroy']);
+Route::post('/addsession', [App\Http\Controllers\SessionController::class, 'add']);
+Route::get('/addsession', function () {
+    $donnesformation = DB::table('formations')->get();
+    return view('sessions.addsession',compact('donnesformation'));
+});
+
+     
+
+Route::get('/session/{session}/modifiersession', [App\Http\Controllers\SessionController::class, 'getUpdate']);
+Route::put('/session/{session}',[App\Http\Controllers\SessionController::class, 'update']);
+        /////////////// formations /////////////////////
+    
+Route::get('/formation', function () {
+    
+    //  $les = DB::table('type_centres')->get();
+     //  return dd($les);
+     return view('formations.formation'/* ,compact('les') */);
+  });
+  Route::get('/formation', [App\Http\Controllers\FormationController::class, 'index'])->name("formations");
+   
+  
+  
+  Route::post('/addformation', [App\Http\Controllers\FormationController::class, 'add']);
+  Route::get('/addformation', function () {
+        $donnes = DB::table('sessions')->get();
+    //  return dd($donnes);
+      return view('formations.addformation',compact('donnes'));
+  });
+  
+  
+  
+  Route::delete('/deleteformation/{formation}', [App\Http\Controllers\FormationController::class, 'destroy']);
+  Route::get('/formation/{formation}/modifier', [App\Http\Controllers\FormationController::class, 'getUpdate']);
+  Route::put('/formation/{formation}',[App\Http\Controllers\FormationController::class, 'update']);
+  Route::get('/formationdetail/{id}', function () {
+      return view('formations.formation');
+  });
+  Route::get('/formationdetail/{id}', [App\Http\Controllers\FormationController::class, 'show']);
