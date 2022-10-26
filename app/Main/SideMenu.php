@@ -106,6 +106,14 @@ class SideMenu
 
 
 
+            'reclamation' => [
+                'icon' => 'inbox',
+                'route_name' => 'reclamation',        
+                'params' => [
+                    'layout' => 'side-menu'
+                ],
+                'title' => 'Reclamations'
+            ],
 
 
 

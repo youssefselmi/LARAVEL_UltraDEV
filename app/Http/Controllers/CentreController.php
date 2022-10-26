@@ -16,6 +16,8 @@ class CentreController extends Controller
     public function index()
     {
           $less = DB::table('type_centres')->get();
+
+          
         //    return dd($less);
      //   $les = DB::table('type_centres')->get();
         return view('centres.centre', [ 'centres' => \App\Models\Centre::all() ], compact('less'));

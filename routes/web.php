@@ -259,3 +259,38 @@ Route::get('/formation', function () {
       return view('formations.formation');
   });
   Route::get('/formationdetail/{id}', [App\Http\Controllers\FormationController::class, 'show']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ///////////////////////////////// Reclamations elyes ////////////////////////////////////////////////
+
+
+
+  Route::post('/addreclamation', [App\Http\Controllers\ReclamationController::class, 'add']);
+  Route::get('/addreclamation', function () {
+      return view('reclamation.addreclamation');
+  });
+  
+
+
+  Route::get('/reclamation', function () {   
+    return view('reclamation.reclamation');
+});
+Route::get('/reclamation', [App\Http\Controllers\ReclamationController::class, 'index'])->name("reclamation");
+Route::delete('/deletereclamation/{reclamation}', [App\Http\Controllers\ReclamationController::class, 'destroy']);
+
+
+Route::get('/repondre', function () {   
+    return view('reclamation.reponse');
+});
