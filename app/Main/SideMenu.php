@@ -84,6 +84,25 @@ class SideMenu
                 'title' => 'Types des centres'
             ],
 
+            
+            'appointments' => [
+                'icon' => 'inbox',
+                'route_name' => 'appointments',
+                'params' => [
+                    'layout' => 'side-menu'
+                ],
+                'title' => 'Rendez-Vous'
+            ],
+            
+            'Atypes' => [
+                'icon' => 'inbox',
+                'route_name' => 'typeappointment',        
+                'params' => [
+                    'layout' => 'side-menu'
+                ],
+                'title' => 'Types des rendez vous'
+            ],
+
 
 
 

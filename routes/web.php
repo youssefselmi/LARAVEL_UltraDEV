@@ -8,7 +8,9 @@ use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\CentreController;
 use App\Http\Controllers\TypeCentreController;
 use App\Http\Controllers\Frontofficecontroller;
-
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\TypeAppointmentController;
+use App\Http\Controllers\BotManController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +30,9 @@ Route::controller(AuthController::class)->middleware('loggedin')->group(function
     Route::get('login', 'loginView')->name('login.index');
     Route::post('login', 'login')->name('login.check');
 });
+
+
+Route::match(['get', 'post'], 'botman', [BotManController::class, 'handle'])->name('chatbot');
 
 Route::middleware('auth')->group(function() {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
@@ -130,12 +135,58 @@ Route::get('/addtype', function () {
 Route::get('/typecentre/{typecentre}/modifiertype', [App\Http\Controllers\TypeCentreController::class, 'getUpdate']);
 Route::put('/typecentre/{typecentre}',[App\Http\Controllers\TypeCentreController::class, 'update']);
 
-///////////////////////////////////////////////////////////////////
+///////////////////////////////Amir////////////////////////////////////
+
+Route::get('/Appointment', function () {
+    
+    //  $les = DB::table('type_appointments')->get();
+     //  return dd($les);
+     return view('appointments.appointment',compact('les'));
+  });
+  Route::get('/Appointment', [App\Http\Controllers\AppointmentController::class, 'index'])->name("appointments");
+   
+  
+  
+  Route::post('/addappointment', [App\Http\Controllers\AppointmentController::class, 'add']);
+  Route::get('/addappointment', function () {
+        $donnes = DB::table('type_appointments')->get();
+    //  return dd($donnes);
+      return view('appointments.addappointment',compact('donnes'));
+  });
+  
+  
+  
+  Route::delete('/deleteappointment/{appointment}', [App\Http\Controllers\AppointmentController::class, 'destroy']);
+  Route::get('/appointment/{appointment}/modifier', [App\Http\Controllers\AppointmentController::class, 'getUpdate']);
+  Route::put('/appointment/{appointment}',[App\Http\Controllers\AppointmentController::class, 'update']);
+  Route::get('/appointmentdetail/{id}', function () {
+      return view('appointments.appointment');
+  });
+  Route::get('/appointmentdetail/{id}', [App\Http\Controllers\AppointmentController::class, 'show']);
+  
+  Route::get('/appointmentdetailfront/{id}', [App\Http\Controllers\Frontofficecontroller::class, 'showfront']);
+
+ /////////////////// Type Appointment ////////////////////////////       
+
+ Route::get('/typeappointment', function () {
+    
+    return view('typeappointments.typesappointment');
 
 
+});
+Route::get('/typeappointment', [App\Http\Controllers\TypeAppointmentController::class, 'index'])->name("typeappointment");
 
 
+Route::delete('/deletetype/{typeappointment}', [App\Http\Controllers\TypeAppointmentController::class, 'destroy']);
+Route::post('/addtype', [App\Http\Controllers\TypeAppointmentController::class, 'add']);
+Route::get('/addtype', function () {
+    return view('typeappointments.addtype');
+});
 
+     
+
+Route::get('/typeappointment/{typeappointment}/modifiertype', [App\Http\Controllers\TypeAppointmentController::class, 'getUpdate']);
+Route::put('/typeappointment/{typeappointment}',[App\Http\Controllers\TypeAppointmentController::class, 'update']);
 
 
 
@@ -261,6 +312,28 @@ Route::get('/formation', function () {
   Route::get('/formationdetail/{id}', [App\Http\Controllers\FormationController::class, 'show']);
 
 
+  ////////////////////////////////////////////Rendezvous////////////////////////////////////////////////////////////
+  
+  Route::post('/addappointment', [App\Http\Controllers\AppointmentController::class, 'add']);
+  Route::get('/addappointment', function () {
+    $donnes = DB::table('type_appointments')->get();
+      return view('appointments.addappointment',compact('donnes'));
+  });
+  
+
+
+  Route::get('/appointment', function () {   
+    return view('appointments.appointment');
+});
+Route::get('/appointment', [App\Http\Controllers\AppointmentController::class, 'index'])->name("appointment");
+Route::delete('/deleteappointment/{appointment}', [App\Http\Controllers\AppointmentController::class, 'destroy']);
+
+
+Route::get('/repondre', function () {   
+    return view('appointment.reponse');
+});
+
+  
 
 
 
@@ -294,3 +367,5 @@ Route::delete('/deletereclamation/{reclamation}', [App\Http\Controllers\Reclamat
 Route::get('/repondre', function () {   
     return view('reclamation.reponse');
 });
+
+
