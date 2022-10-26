@@ -105,7 +105,7 @@
                 >
                     <form
                         class="edit-form"
-                        action="/formation/{{ $formation['id'] }}/modifier"
+                        action="/session/{{ $formation['id'] }}/modifiersession"
                         method="GET"
                     >
                         <button
@@ -132,7 +132,7 @@
                     </form>
                     <form
                         class="delete-form"
-                        action="/formation/{{$formation->id}}"
+                        action="/deletesession/{{$formation->id}}"
                         method="POST"
                     >
                         @csrf @method('DELETE')

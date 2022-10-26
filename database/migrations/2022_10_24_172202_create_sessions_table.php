@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('capacite');
             $table->timestamps();
             $table->foreignId('formation_id')->on('formations')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

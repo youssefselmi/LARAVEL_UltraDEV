@@ -11,7 +11,11 @@ class Session extends Model
     protected $fillable = [
         'nom_session',
         'date_session',
-        'capacite'
+        'capacite',
+        'formation_id'
+
+        
+
     ];
 
     public function formations()

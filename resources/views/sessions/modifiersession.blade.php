@@ -28,7 +28,7 @@
     class="needs-validation"
     novalidate
     method="POST"
-    action="/session/{{ $session->id }}"
+    action="/session/{{ $session->id}}"
     enctype="multipart/form-data"
     onsubmit="return checkDate()"
 >
@@ -86,6 +86,21 @@
  
 
   
+
+
+    <div class="position-relative row form-group">
+    <label for="locale" class="col-sm-2 col-form-label">Type de formation</label>
+    <div class="col-sm-10">
+    <select class="form-control"name="formation_id">
+            @foreach ($les as $key => $value)
+            <option value="{{$value->id}}">
+                {{ $value->nom }}
+            </option>
+            @endforeach
+        </select>
+</div>
+</div>
+
 
 
 

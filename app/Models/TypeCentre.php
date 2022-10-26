@@ -8,9 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class TypeCentre extends Model
 {
     use HasFactory;
-
-
-      
+ 
     protected $fillable = [
         'type'
     ];

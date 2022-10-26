@@ -13,13 +13,15 @@ class SessionController extends Controller
     
     public function index()
     {
-        return view('sessions.session', [ 'sessions' => \App\Models\Session::all() ]);
+        $lesss = DB::table('type_centres')->get();
+
+        return view('sessions.session', [ 'sessions' => \App\Models\Session::all() ], compact('lesss'));
     }
     public function destroy(Session $session) {
         
 
 
-        $donnes = DB::table('formations')->get();
+    /*    $donnes = DB::table('formations')->get();
     
         foreach ($donnes as $lestypes) {
     
@@ -28,8 +30,8 @@ class SessionController extends Controller
           //   $lestypes->delete();    
              DB::table('formations')->where('type_id',$sessions->id)->delete();
          }
-     }
-     $sessions->delete();
+     }*/
+     $session->delete();
 
      return redirect('/session');
      
@@ -43,7 +45,9 @@ class SessionController extends Controller
     $data = request()->validate([
         'nom_session' =>'required',
         'date_session' =>'required',
-        'capacite' =>'required'
+        'capacite' =>'required',
+        'formation_id' =>'',
+
         
     ],
     [
@@ -59,25 +63,45 @@ class SessionController extends Controller
         'nom_session' => $data['nom_session'],
         'date_session' => $data['date_session'],
         'capacite' => $data['capacite'],
+        'formation_id' => $data['formation_id'],
+
     ]);
 
     return redirect('/session');
 
 }
+
+
 public function create(){
+
+    $donnes = DB::table('type_centres')->get();
     return view('sessions.addsession')->withSuccess(__('session created successfully.'));
 ;
 }
+
+
+
+
+
+
+
+
+
 public function getUpdate(Session $session){
-    return view('sessions.modifiersession', compact('session'));
+
+    $les = DB::table('formations')->get();
+    return view('sessions.modifiersession', compact('session'), compact('les'));
 }
+
 
 public function update(Session $session,Request $request){
 
     $data = request()->validate([
         'nom_session' =>'required',
         'date_session' =>'required',
-        'capacite' =>'required'
+        'capacite' =>'required',
+        'formation_id' =>'',
+
         
     ],
     [
@@ -93,6 +117,8 @@ public function update(Session $session,Request $request){
         'nom_session' => $data['nom_session'],
         'date_session' => $data['date_session'],
         'capacite' => $data['capacite'],
+        'formation_id' => $data['formation_id'],
+
     ]);
 
 

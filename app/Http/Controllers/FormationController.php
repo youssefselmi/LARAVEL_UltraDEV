@@ -36,7 +36,6 @@ class FormationController extends Controller
             'location_formation' =>'required',
             'prix_formation' =>'required',
             'duree_formation' =>'required',
-            'session_id' =>'',
          
         ],
         
@@ -44,7 +43,6 @@ class FormationController extends Controller
             'nom.required' =>'Remplir le nom ',
             'description.required' =>'Remplir la description ',
             'image.required' =>'Remplir image ',
-           'session_id.required' =>'Remplir id formassions ',  
             'mail_formateur.required' =>'Remplir le mail du formateur ',
             'nom_formateur.required' =>'Remplir le nom du formateur ',
             'prix_formation.required' =>'Remplir le prix du formation ',
@@ -70,7 +68,6 @@ class FormationController extends Controller
             'location_formation' => $data['location_formation'],
             'prix_formation' => $data['prix_formation'],
             'duree_formation' => $data['duree_formation'],
-            'session_id' => $data['session_id'],
         ]);
 
 
@@ -107,7 +104,6 @@ class FormationController extends Controller
         'location_formation' =>'required',
         'prix_formation' =>'required',
         'duree_formation' =>'required',
-        'session_id' =>'required',
      
     ],
     
@@ -115,7 +111,6 @@ class FormationController extends Controller
         'nom.required' =>'Remplir le nom ',
         'description.required' =>'Remplir la description ',
         'image.required' =>'Remplir image ',
-        'session_id.required' =>'Remplir id formassions ',  
         'mail_formateur.required' =>'Remplir le mail du formateur ',
         'nom_formateur.required' =>'Remplir le nom du formateur ',
         'prix_formation.required' =>'Remplir le prix du formation ',
@@ -148,7 +143,6 @@ class FormationController extends Controller
         'location_formation' => $data['location_formation'],
         'prix_formation' => $data['prix_formation'],
         'duree_formation' => $data['duree_formation'],
-        'session_id' => $data['session_id'],
     ]);
   
 

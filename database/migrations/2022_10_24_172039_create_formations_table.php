@@ -25,7 +25,6 @@ return new class extends Migration
             $table->integer('prix_formation');
             $table->String('duree_formation');
             $table->timestamps();
-            $table->foreignId('session_id')->on('sessions')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

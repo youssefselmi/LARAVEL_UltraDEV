@@ -286,28 +286,6 @@
 
 
 
-    <br>
-    <div class="position-relative row form-group">
-    <label for="session_id" class="col-sm-2 col-form-label">Session du formation</label>
-    <div class="col-sm-10">
-   <!--  <select class="form-control"name="session_id">
-            @foreach ($donnes as $key => $value)
-            <option value="{{$value->id}}">
-                {{ $value->type }}
-            </option>
-            @endforeach
-        </select> -->
-        <div class="col-sm-10">
-            <input
-                name="session_id"
-                placeholder="date formation.."
-                type="text"
-                class="form-control"
-                
-            />
-        </div>
-</div>
-</div>
 
 
 

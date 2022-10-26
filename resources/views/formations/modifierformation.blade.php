@@ -71,19 +71,7 @@
     
 
 
-    
-    <div class="position-relative row form-group">
-    <label for="nom_session" class="col-sm-2 col-form-label">session</label>
-    <div class="col-sm-10">
-    <select class="form-control"name="nom_session">
-            @foreach ($les as $key => $value)
-            <option value="{{$value->id}}">
-                {{ $value->nom_session }}
-            </option>
-            @endforeach
-        </select>
-</div>
-</div>
+   
 
 
 

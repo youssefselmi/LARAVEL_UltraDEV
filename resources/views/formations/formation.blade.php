@@ -146,9 +146,7 @@
             <h4 class="card-title mb-2 font-weight-bold">
                 {{ $formation["prix"] }}
 </h4>
-            <p class="card-text text-muted text-truncate">
-                {{ $formation["session_id"] }}
-            </p>
+           
             <p class="card-text text-muted text-truncate">
                 {{ $formation["description"] }}
             </p>
@@ -239,7 +237,6 @@
                 <th>localisation </th>
                 <th>Prix</th>
                 <th>Duree</th>
-                <th>session</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -247,7 +244,6 @@
         <tbody>
             <tr>
                 <th scope="row">----</th>
-                <td>----</td>
                 <td>----</td>
                 <td>----</td>
                 <td>----</td>

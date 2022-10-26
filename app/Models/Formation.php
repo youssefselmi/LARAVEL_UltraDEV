@@ -18,7 +18,6 @@ class Formation extends Model
         'location_formation',
         'prix_formation',
         'duree_formation',
-        'session_id'
     ];
 
     public function sessions()
