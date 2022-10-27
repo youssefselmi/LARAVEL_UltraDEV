@@ -236,7 +236,8 @@ height : 50px;
                  
                       <form
                         class="edit-form"
-                        action="/showreponses/{{$rec->id}}"
+                        action="/reponses/{{ $rec['id'] }}"
+                       
                         method="GET"
                         >
                         <button
