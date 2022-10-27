@@ -181,7 +181,7 @@
         </tbody>
         @endif @if (count($reponses) != 0)
         <tbody>
-            @foreach ($reponses as $reponse)
+            @foreach ($lesreponses   as $reponse)
             <tr>
                 <th scope="row">{{ $reponse["id"] }}</th>
                 <td>{{ $reponse["reponse"] }}</td>
@@ -192,22 +192,6 @@
             
                 <td class="table-report__action w-56">
 
-
-<form
-                        class="edit-form"
-                        action="/reponse/{{ $reponse['id'] }}/modifierreponse"
-                        
-                        method="GET"
-                    >
-                        <button
-                            class="btn btn-success"
-                            style="color: rgb(194, 194, 194); font-size: 1.2rem"
-                            data-toggle="tooltip"
-                            data-placement="top"
-                            title="modifier"
-                        >
-                        <i data-lucide="check-square" class="w-4 h-4 mr-1"></i>                        </button>
-                    </form>
 
 
                             

@@ -309,12 +309,7 @@ Route::post('/repondre', [App\Http\Controllers\ReponseController::class, 'add'])
   Route::get('/repondre/{reclamation}', function () {
 
     $url= \URL::current();
-//dd($url);
-   // echo $url;
-  
-  //  $key = array_search('repondre/', $url);
-  //  dd($key);
-   //  echo $key;
+
 
     $key=strpos($url,"e/");
 
@@ -323,10 +318,6 @@ Route::post('/repondre', [App\Http\Controllers\ReponseController::class, 'add'])
 
      $key1=strpos($url,"4");
 
-    // dd($key1);
-    //echo $key1;
-
- //  dd(strlen($url));
 
    $var= substr($url, $key+2, strlen($url));
 
@@ -355,38 +346,24 @@ Route::post('/repondre', [App\Http\Controllers\ReponseController::class, 'add'])
 });*/
 
 Route::delete('/deletereponse/{reponse}', [App\Http\Controllers\ReponseController::class, 'destroy']);
-Route::get('/reponse', [App\Http\Controllers\ReponseController::class, 'index'])->name("reponse");
+// Route::get('/reponse', [App\Http\Controllers\ReponseController::class, 'index'])->name("reponse");
 
 
 Route::get('/reponse/{reponse}/modifierreponse', [App\Http\Controllers\ReponseController::class, 'getUpdate']);
 Route::put('/reponse/{reponse}',[App\Http\Controllers\ReponseController::class, 'update']);
 
 
+Route::get('/reponses/{reponse}', [App\Http\Controllers\ReponseController::class, 'index']);
 
+// Route::get('/reponses/{reponse}', function () {   
+//     return view('reponses.reponses');
+// });
 
 Route::get('/showreponses', [App\Http\Controllers\ReponseController::class, 'getreponses']);
 
 Route::get('/showreponses/{reclamation}', function () {   
     return view('reponses.showreponses');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
