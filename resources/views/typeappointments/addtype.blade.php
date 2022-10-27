@@ -11,7 +11,7 @@
 
 
 
-<h1>Creation d'un Type</h1>
+<h1>Creation d'une Categorie RDV</h1>
 <hr />
 <br /><br />
 
@@ -37,12 +37,12 @@
     @csrf
     <div class="position-relative row form-group">
         <label for="type" class="col-sm-2 col-form-label"
-            >Type </label
+            >Categorie </label
         >
         <div class="col-sm-10">
             <input
                 name="type"
-                placeholder="type.."
+                placeholder="Categorie.."
                 type="text"
                 class="form-control"
                 

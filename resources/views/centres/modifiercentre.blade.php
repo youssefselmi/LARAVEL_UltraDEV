@@ -117,7 +117,6 @@
                 class="form-control"
                 required
             />
-            <div class="invalid-feedback">Veuillez entrer un valid locale</div>
         </div>
     </div>
 
@@ -131,7 +130,7 @@
  
     <div class="position-relative row form-check p-0">
         <div class="col-sm-10 offset-sm-2">
-            <button class="btn btn-primary">Soumettre</button>
+        <button class="btn btn-success">Envoyer</button>
         </div>
     </div>
 </form>

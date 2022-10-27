@@ -99,6 +99,7 @@
 
 
 
+
            <button> <label onclick="toList()"
                 class="btn btn-outline-primary p-2 btn-transition focus active" > 
 
@@ -153,7 +154,7 @@
             >
                 <a href="/appointment" style="opacity : 0; width : 0; height : 0" disabled>Explorer plus</a>
                 <div
-                    class="action-icon-buttons"
+                    class="action-icon-buttons d-flex"
                     style="display: flex; gap: 1rem"
                 >
                     <form
@@ -311,7 +312,7 @@
 
 -->
 
-<form
+                    <form
                         class="edit-form"
                         action="/appointment/{{ $appointment['id'] }}/modifier"
                         method="GET"
@@ -325,6 +326,7 @@
                         >
                         <i data-lucide="check-square" class="w-4 h-4 mr-1"></i>                        </button>
                     </form>
+                
 
 
 

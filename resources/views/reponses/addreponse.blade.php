@@ -74,6 +74,16 @@
             />
         </div>
 
+
+        <div class="col-sm-10">
+    <div style="background-color:red" >
+    @error('reponse')
+    {{$message}}
+    @enderror
+
+    </div>
+    </div>
+
     
 
 

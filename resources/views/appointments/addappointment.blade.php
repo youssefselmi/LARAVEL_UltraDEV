@@ -11,7 +11,7 @@
 
 
 
-<h1>Creation d'un Centre</h1>
+<h1>Creation d'un rendez vous</h1>
 <hr />
 <br /><br />
 <div class="grid grid-cols-12 gap-6 mt-5">
@@ -144,7 +144,7 @@
 
 
     <div class="position-relative row form-group">
-    <label for="for" class="col-sm-2 col-form-label">Type de appointment</label>
+    <label for="for" class="col-sm-2 col-form-label">Type de Rendez-Vous</label>
     <div class="col-sm-10">
     <select class="form-control"name="type_id">
             @foreach ($donnes as $key => $value)

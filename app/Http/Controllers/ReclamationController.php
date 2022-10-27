@@ -30,15 +30,14 @@ class ReclamationController extends Controller
         $data = request()->validate([
             'nom' =>'required',
             'image' => ['required', 'image'],
-            'date' =>'required',
+           // 'date' =>'',
             'description' =>'required',
-            'mail' =>'required',
+            'mail' =>'required|email',
 
         ],
         
         [
             'nom.required' =>'Remplir le nom ',
-            'date.required' =>'Remplir la locale ',
             'description.required' =>'Remplir description ',
             'mail.required' =>'Remplir mail ',
 
@@ -50,10 +49,13 @@ class ReclamationController extends Controller
             request()->file('image')->getClientOriginalName()
         );
 
+        $date = date('Y-m-d H:i:s');
+
+
         \App\Models\Reclamation::create([
             'nom' => $data['nom'],
             'image' => $data['image']->getClientOriginalName(),
-            'date' => $data['date'],
+            'date' => $date,
             'description' => $data['description'],
             'mail' => $data['mail'],
 

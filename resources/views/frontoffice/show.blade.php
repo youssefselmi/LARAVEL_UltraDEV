@@ -145,7 +145,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h2>Scan Me</h2>
+    <h2>Scan Centre</h2>
     </div>
     <div class="card-body">
         {!! QrCode::size(200)->generate("https://www.google.com/search?q=Centre $centres->nom $centres->locale ") !!}
@@ -154,7 +154,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h2>Scan Me</h2>
+    <h2>Scan Centre</h2>
     </div>
     <div class="card-body">
         {!! QrCode::size(200)->backgroundColor(255,90,0)->generate('https://techvblogs.com/blog/generate-qr-code-laravel-9') !!}

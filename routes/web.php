@@ -355,7 +355,7 @@ Route::post('/repondre', [App\Http\Controllers\ReponseController::class, 'add'])
 });*/
 
 Route::delete('/deletereponse/{reponse}', [App\Http\Controllers\ReponseController::class, 'destroy']);
-Route::get('/reponse', [App\Http\Controllers\ReponseController::class, 'index'])->name("reponse");
+//Route::get('/reponse', [App\Http\Controllers\ReponseController::class, 'index'])->name("reponse");
 
 
 Route::get('/reponse/{reponse}/modifierreponse', [App\Http\Controllers\ReponseController::class, 'getUpdate']);
@@ -364,11 +364,11 @@ Route::put('/reponse/{reponse}',[App\Http\Controllers\ReponseController::class, 
 
 
 
-Route::get('/showreponses', [App\Http\Controllers\ReponseController::class, 'getreponses']);
+Route::get('/reponses/{reponse}', [App\Http\Controllers\ReponseController::class, 'index']);
 
-Route::get('/showreponses/{reclamation}', function () {   
+/*Route::get('/showreponses/{reclamation}', function () {   
     return view('reponses.showreponses');
-});
+});*/
 
 
 
@@ -397,10 +397,22 @@ Route::get('/showreponses/{reclamation}', function () {
 
 
 
-////////////////////////////////////// AMIR ///////////////////////////////////////////////
 
 
-///////////////////////////////Amir////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////Amir////////////////////////////////////
 
 Route::get('/Appointment', function () {
     
@@ -430,7 +442,6 @@ Route::get('/Appointment', function () {
   Route::get('/appointmentdetail/{id}', [App\Http\Controllers\AppointmentController::class, 'show']);
   
   Route::get('/appointmentdetailfront/{id}', [App\Http\Controllers\Frontofficecontroller::class, 'showfront']);
-
  /////////////////// Type Appointment ////////////////////////////       
 
  Route::get('/typeappointment', function () {
@@ -454,3 +465,71 @@ Route::get('/typeappointment/{typeappointment}/modifiertype', [App\Http\Controll
 Route::put('/typeappointment/{typeappointment}',[App\Http\Controllers\TypeAppointmentController::class, 'update']);
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////Partie OUALI /////////////////////////////////////////////
+/////////////////// Promotion ////////////////////////////
+Route::get('/promotion', function () {return view('promotions.promotion');});
+Route::get('/promotion', [App\Http\Controllers\PromotionController::class, 'index'])->name("promotion");
+Route::delete('/deletepromotion/{promotion}', [App\Http\Controllers\PromotionController::class, 'destroy']);
+Route::post('/addpromotion', [App\Http\Controllers\PromotionController::class, 'add']);
+Route::get('/addpromotion', function () {return view('promotions.addpromotion');});
+Route::get('/promotion/{promotion}/modifierpromotion', [App\Http\Controllers\PromotionController::class, 'getUpdate']);
+Route::put('/promotion/{promotion}',[App\Http\Controllers\PromotionController::class, 'update']);
+///////////////////////////////////////////////////////////////////
+///////////////////////////////// Services //////////////////////////////
+Route::get('/service', function () {return view('services.service',compact('les'));});
+Route::get('/service', [App\Http\Controllers\ServiceController::class, 'index'])->name("services");
+Route::post('/addservice', [App\Http\Controllers\ServiceController::class, 'add']);
+Route::get('/addservice', function () {$donnes = DB::table('promotions')->get();
+    return view('services.addservice',compact('donnes'));});
+Route::delete('/deleteservice/{service}', [App\Http\Controllers\ServiceController::class, 'destroy']);
+Route::get('/service/{service}/modifier', [App\Http\Controllers\ServiceController::class, 'getUpdate']);
+Route::put('/service/{service}',[App\Http\Controllers\ServiceController::class, 'update']);
+Route::get('/servicedetail/{id}', function () {return view('services.service');});
+Route::get('/servicedetail/{id}', [App\Http\Controllers\ServiceController::class, 'show']);
+Route::get('/servicedetailfront/{id}', [App\Http\Controllers\Frontofficecontroller::class, 'showfront']);
+///////////////////////////////////////////////////////////////////////////////////////////
+Route::get('/servicegrid', function () {return view('services.servicegrid');});
+Route::get('/servicegrid', [App\Http\Controllers\ServiceController::class, 'index2'])->name("servicegrid");
+/////////////////////////////////////////////////////////////////////////////////////////////

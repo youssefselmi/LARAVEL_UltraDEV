@@ -35,9 +35,9 @@
     @csrf @method('PUT')
     <div class="position-relative row form-group">
         <label for="nom" class="col-sm-2 col-form-label"
-            >Nom de appointment</label
+            >Nom de Rendez-Vous</label
         >
-        <div class="col-sm-10">
+        {{-- <div class="col-sm-10">
             <input
                 value="{{$appointment->nom}}"
                 name="nom"
@@ -62,7 +62,7 @@
                 >Choisissez des photos avec des bonnes qualités</small
             >
         </div>
-    </div>
+    </div> --}}
 
 
 
@@ -86,7 +86,7 @@
 </div>
 
 
-
+{{-- 
 
 
 
@@ -119,7 +119,34 @@
             />
             <div class="invalid-feedback">Veuillez entrer un valid locale</div>
         </div>
-    </div>
+    </div> --}}
+    <div class="intro-y box p-5">
+        <div class="card" style="margin:20px;">
+          <div class="card-header">Edit Appointment</div>
+          <div class="card-body">
+              
+              <form action="{{ url('appointment/' .$appointment->id) }}" method="post" >
+                {!! csrf_field() !!}
+                @method("PUT")
+                <input type="hidden" name="id" id="id" value="{{$appointment->id}}" id="id"  />
+                <label>With</label></br>
+                <input type="text" name="with" id="with" value="{{$appointment->with}}" class="form-control" required>
+                <div class="invalid-feedback">Veuillez entrer un valid locale</div></br>
+                <label>For</label></br>
+                <input type="text" name="for" id="for" value="{{$appointment->for}}" class="form-control" required>
+                <div class="invalid-feedback">Veuillez entrer un valid locale</div></br>
+                <label>Reason</label>
+                <div class="invalid-feedback">Veuillez entrer un valid locale</div></br>
+                <input type="text" name="reason" id="reason" value="{{$appointment->reason}}" class="form-control" required>
+                <div class="invalid-feedback">Veuillez entrer un valid locale</div></br>
+                <label>Date</label></br>
+                <input type="date" name="date" id="date" value="{{$appointment->date}}" class="form-control" required>
+                <div class="invalid-feedback">Veuillez entrer un valid locale</div></br>
+                <input type="submit" value="Update" class="btn btn-success"></br>
+            </form>
+            
+          </div>
+        </div>
 
 
 

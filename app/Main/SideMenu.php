@@ -76,6 +76,29 @@ class SideMenu
             ],
 
 
+            'service' => [
+                'icon' => 'inbox',
+                'route_name' => 'services',        
+                'params' => [
+                    'layout' => 'side-menu'
+                ],
+                'title' => 'Services'
+            ],
+
+            
+
+            
+            'promotions' => [
+                'icon' => 'inbox',
+                'route_name' => 'promotion',        
+                'params' => [
+                    'layout' => 'side-menu'
+                ],
+                'title' => 'Promotions'
+
+                ],
+
+
 
 
             'appointement' => [
@@ -84,7 +107,7 @@ class SideMenu
                 'params' => [
                     'layout' => 'side-menu'
                 ],
-                'title' => 'Appointement'
+                'title' => 'Rendez-Vous'
             ],
 
 
@@ -94,15 +117,22 @@ class SideMenu
                 'params' => [
                     'layout' => 'side-menu'
                 ],
-                'title' => 'Appointement Category'
+                'title' => 'Rendez-Vous Category'
             ],
 
+
+
+
+            
 
 
 
 
 
             'devider',
+
+
+            
             
         
         ];

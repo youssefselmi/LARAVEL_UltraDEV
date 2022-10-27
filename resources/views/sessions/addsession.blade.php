@@ -75,14 +75,14 @@
             <input
                 name="date_session"
                 placeholder="date session.."
-                type="text"
+                type="date"
                 class="form-control"
-                
-                
+          
             />
         </div>
 
         
+
     <div class="col-sm-10">
     <div style="background-color:red" >
     @error('date_session')

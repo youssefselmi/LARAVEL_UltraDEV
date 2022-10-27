@@ -27,29 +27,32 @@ class FormationController extends Controller
 
 
         $data = request()->validate([
-            'nom' =>'required',
+            'nom' =>'required|alpha_dash',
             'image' => ['required', 'image'],
-            'description' =>'required',
-            'mail_formateur' =>'required',
-            'nom_formateur' =>'required',
-            'formateur_profession' =>'required',
-            'location_formation' =>'required',
-            'prix_formation' =>'required',
-            'duree_formation' =>'required',
-         
+            'description' =>'required|alpha|min:20',
+            'mail_formateur' =>'required|email',
+            'nom_formateur' =>'required|alpha|min:2',
+            'formateur_profession' =>'required|alpha|min:2',
+            'location_formation' =>'required|alpha|min:8',
+            'prix_formation' =>'required|integer',
+            'duree_formation' =>'required|alpha_num',
+
         ],
-        
+
         [
             'nom.required' =>'Remplir le nom ',
             'description.required' =>'Remplir la description ',
             'image.required' =>'Remplir image ',
-            'mail_formateur.required' =>'Remplir le mail du formateur ',
+            'mail_formateur.required' =>'Remplir le mail du formateur
+ou format invalid',
             'nom_formateur.required' =>'Remplir le nom du formateur ',
             'prix_formation.required' =>'Remplir le prix du formation ',
             'duree_formation.required' =>'Remplir la durée du formation ',
-            'formateur_profession.required' =>'Remplir la formation du formateur ',
-            'location_formation.required' =>'Remplir la location du formation ',    
-        ]  
+            'formateur_profession.required' =>'Remplir la formation du
+formateur ',
+            'location_formation.required' =>'Remplir la location du
+formation ',
+        ]
     );
         request()->file('image')->move(
             public_path('storage/imgs'),
@@ -64,7 +67,7 @@ class FormationController extends Controller
             'description' => $data['description'],
             'mail_formateur' => $data['mail_formateur'],
             'nom_formateur' => $data['nom_formateur'],
-            'formateur_profession' => $data['formateur_profession'],
+            'formateur_profession'  => $data['formateur_profession'],
             'location_formation' => $data['location_formation'],
             'prix_formation' => $data['prix_formation'],
             'duree_formation' => $data['duree_formation'],
@@ -95,29 +98,32 @@ class FormationController extends Controller
    public function update(Formation $formation,Request $request){
 
     $data = request()->validate([
-        'nom' =>'required',
+        'nom' =>'required|alpha_dash',
         'image' => ['required', 'image'],
-        'description' =>'required',
-        'mail_formateur' =>'required',
-        'nom_formateur' =>'required',
-        'formateur_profession' =>'required',
-        'location_formation' =>'required',
-        'prix_formation' =>'required',
-        'duree_formation' =>'required',
-     
+        'description' =>'required|alpha|min:20',
+        'mail_formateur' =>'required|email',
+        'nom_formateur' =>'required|alpha|min:2',
+        'formateur_profession' =>'required|alpha|min:2',
+        'location_formation' =>'required|alpha|min:8',
+        'prix_formation' =>'required|integer',
+        'duree_formation' =>'required|alpha_num',
+
     ],
-    
+
     [
         'nom.required' =>'Remplir le nom ',
         'description.required' =>'Remplir la description ',
         'image.required' =>'Remplir image ',
-        'mail_formateur.required' =>'Remplir le mail du formateur ',
+        'mail_formateur.required' =>'Remplir le mail du formateur
+ou format invalid',
         'nom_formateur.required' =>'Remplir le nom du formateur ',
         'prix_formation.required' =>'Remplir le prix du formation ',
         'duree_formation.required' =>'Remplir la durée du formation ',
-        'formateur_profession.required' =>'Remplir la formation du formateur ',
-        'location_formation.required' =>'Remplir la location du formation ',    
-    ]  
+        'formateur_profession.required' =>'Remplir la formation du
+formateur ',
+        'location_formation.required' =>'Remplir la location du
+formation ',
+    ]
 );
 
     $path = '';

@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reponses', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->String('reponse');
-          //  $table->foreignId('reclamation_id')->constrained();
-
-            $table->foreignId('reclamation_id')
-            ->references('id')->on('reclamations')
-            ->onDelete('cascade');
-
+            $table->String('nom');
+            $table->foreignId('promo_id')->on('promotions')->onDelete('cascade')->onUpdate('cascade');
+            $table->String('locale');
+            $table->String('image');
+            $table->String('desc');
+            $table->String('tel');
+            $table->String('price');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reponses');
+        Schema::dropIfExists('services');
     }
 };

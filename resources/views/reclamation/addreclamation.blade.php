@@ -153,21 +153,77 @@
                 <div class="col-md-6 form-group">
                   <input type="text" name="nom" class="form-control" id="nom" placeholder="Your Name" required>
                 </div>
+
+
+                <div class="col-sm-10">
+    <div style="background-color:red" >
+    @error('nom')
+    {{$message}}
+    @enderror
+
+    </div>
+    </div>
+
+
+
+
+
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <input type="text" class="form-control" name="mail" id="mail" placeholder="Your Email" required>
                 </div>
+
+
+       <div class="col-sm-10">
+    <div style="background-color:red" >
+    @error('mail')
+    {{$message}}
+    @enderror
+
+    </div>
+    </div>
+
+
+
+
+
+
               </div>
+
+
+
+
+
+
+
               
               <div class="form-group mt-3">
                 <textarea class="form-control" name="description" rows="5" placeholder="Message" required></textarea>
               </div>
+
+
+
+              <div class="col-sm-10">
+    <div style="background-color:red" >
+    @error('description')
+    {{$message}}
+    @enderror
+
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
            
               <br>
 
-
-              <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="date" class="form-control" name="date" id="date" >
-                </div>
 
 
 <br>

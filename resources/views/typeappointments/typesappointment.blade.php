@@ -11,12 +11,12 @@
 
 
 
-<h2 class="intro-y text-lg font-medium mt-10">Types Appointments</h2>
+<h2 class="intro-y text-lg font-medium mt-10">Categorie de rendez Vous</h2>
 
 <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
 <form class="edit-form" action="/addtype" method="GET" >
 
-<button class="btn btn-primary shadow-md mr-2">Ajouter un type de appointment</button>
+<button class="btn btn-primary shadow-md mr-2">Ajouter un Categorie</button>
 </form>
 <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">

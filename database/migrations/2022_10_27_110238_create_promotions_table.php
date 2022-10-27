@@ -13,15 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reponses', function (Blueprint $table) {
+        Schema::create('promotions', function (Blueprint $table) {
             $table->id();
-            $table->String('reponse');
-          //  $table->foreignId('reclamation_id')->constrained();
-
-            $table->foreignId('reclamation_id')
-            ->references('id')->on('reclamations')
-            ->onDelete('cascade');
-
+            $table->String('promo');
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reponses');
+        Schema::dropIfExists('promotions');
     }
 };

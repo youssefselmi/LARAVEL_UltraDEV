@@ -17,12 +17,24 @@ class ReponseController extends Controller
     
     public function index()
     {
-        //  $less = DB::table('type_centres')->get();
-        //    return dd($less);
-     //   $les = DB::table('type_centres')->get();
+        $url= \URL::current();
 
+//  dd($url);
+     $key=strpos($url,"s/");
 
-        return view('reponses.reponse', [ 'reponses' => \App\Models\Reponse::all() ]);
+ 
+    $var= substr($url, $key+2, strlen($url));
+ 
+     $array = array(
+         $var 
+     ); 
+     
+     $reponses = DB::table('reponses')->where('reclamation_id',$var)->get();
+    //  $data1 = json_decode($data, true);
+
+$reponses=Reponse::all()->where('reclamation_id',$var);
+// dd($reponses);
+return view('reponses.reponse', compact('reponses'));
     }
 
 
@@ -82,7 +94,11 @@ class ReponseController extends Controller
         $data = request()->validate([
             'reponse' =>'required',
             'reclamation_id' =>'required',
-        ]
+        ],
+        [
+            'reponse.required' =>'Le champ ne doit pas etre vide ',
+
+        ]  
         
        
     );
@@ -100,7 +116,7 @@ class ReponseController extends Controller
             'reponse' => $data['reponse'],
             'reclamation_id' => $data['reclamation_id'],
         ]);       
-        return redirect('/reponse');
+        return redirect('/reclamation');
     }
 
 
@@ -119,7 +135,7 @@ class ReponseController extends Controller
     public function destroy(Reponse $reponse) {
 
         $reponse->delete();
-        return redirect('/reponse');
+        return redirect('/reclamation');
 
     }
 
@@ -151,7 +167,7 @@ class ReponseController extends Controller
             'reclamation_id' => $data['reclamation_id'],
         ]);
 
-        return redirect('/reponse');
+        return redirect('/reclamation');
     }
 
 
