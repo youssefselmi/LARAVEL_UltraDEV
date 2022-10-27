@@ -66,7 +66,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="hidden md:block mx-auto text-slate-500">Showing 1 to 10 of 150 entries</div>
+            <div class="hidden md:block mx-auto text-slate-500">Showing all centers here</div>
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
                     <input type="text" class="form-control w-56 box pr-10" placeholder="Search...">
@@ -161,10 +161,8 @@
                     <div class="p-5">
                         <div class="h-40 2xl:h-56 image-fit rounded-md overflow-hidden before:block before:absolute before:w-full before:h-full before:top-0 before:left-0 before:z-10 before:bg-gradient-to-t before:from-black before:to-black/10">
                             <img alt="Midone - HTML Admin Template" class="rounded-md" src="{{ 'storage/imgs/'.$centre['image'] }}">
-                                <span class="absolute top-0 bg-pending/80 text-white text-xs m-5 px-2 py-1 rounded z-10">Featured</span>
+                                <span class="absolute top-0 bg-pending/80 text-white text-xs m-5 px-2 py-1 rounded z-10">{{ $centre["nom"] }}</span>
                             <div class="absolute bottom-0 text-white px-5 pb-6 z-10">
-                                <a href="" class="block font-medium text-base">{{ $centre["nom"] }}</a>
-                                <span class="text-white/90 text-xs mt-3">  {{ $centre["nom"] }}</span>
                             </div>
                         </div>
                         <div class="text-slate-600 dark:text-slate-500 mt-5">
@@ -179,9 +177,10 @@
                         </div>
                     </div>
                     <div class="flex justify-center lg:justify-end items-center p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                        <a class="flex items-center text-primary mr-auto" href="javascript:;">
+                        <a href="{{ url('/centredetail/' . $centre->id) }}" class="flex items-center text-primary mr-auto" href="javascript:;">
                             <i data-lucide="eye" class="w-4 h-4 mr-1"></i> Preview
                         </a>
+
                         <a class="flex items-center mr-3" href="javascript:;">
                             
 

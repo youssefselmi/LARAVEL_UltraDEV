@@ -5,21 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Reponse extends Model
+class TypeAppointment extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'reponse',
-        'reclamation_id'
+        'type'
     ];
 
- 
-
-    public function reclamation(){
-        return $this->hasOne(Reclamation::class);
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
     }
-
-
-
 }

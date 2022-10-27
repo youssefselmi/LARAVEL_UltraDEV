@@ -11,12 +11,12 @@
 
 
 
-<h2 class="intro-y text-lg font-medium mt-10">Types Centres</h2>
+<h2 class="intro-y text-lg font-medium mt-10">Types Appointments</h2>
 
 <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-<form class="edit-form" action="/addtypecentre" method="GET" >
+<form class="edit-form" action="/addtype" method="GET" >
 
-<button class="btn btn-primary shadow-md mr-2">Ajouter un type de centre</button>
+<button class="btn btn-primary shadow-md mr-2">Ajouter un type de appointment</button>
 </form>
 <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
@@ -112,18 +112,18 @@
     class="evenements-grid-container flex-wrap"
     style="gap: 1.5rem; display: none"
 >
-@foreach ($typescentres as $centre)
+@foreach ($typeappointments as $appointment)
 
 <div
         class="card mt-2"
         style="width: 20rem; transition: opacity 0.5s"
-        id="{{ $centre->id }}"
+        id="{{ $appointment->id }}"
     >
       
         <div class="card-body">
           
             <p class="card-text text-muted text-truncate">
-                {{ $centre["type"] }}
+                {{ $appointment["type"] }}
             </p>
             <div
                 class="actions"
@@ -133,14 +133,14 @@
                     align-items: center;
                 "
             >
-                <a href="/centre" style="opacity : 0; width : 0; height : 0" disabled>Explorer plus</a>
+                <a href="/appointment" style="opacity : 0; width : 0; height : 0" disabled>Explorer plus</a>
                 <div
                     class="action-icon-buttons"
                     style="display: flex; gap: 1rem"
                 >
                     <form
                         class="edit-form"
-                        action="/centre/{{ $centre['id'] }}/modifier"
+                        action="/appointment/{{ $appointment['id'] }}/modifier"
                         method="GET"
                     >
                         <button
@@ -167,7 +167,7 @@
                     </form>
                     <form
                         class="delete-form"
-                        action="/centre/{{$centre->id}}"
+                        action="/appointment/{{$appointment->id}}"
                         method="POST"
                     >
                         @csrf @method('DELETE')
@@ -193,8 +193,8 @@
             </div>
         </div>
     </div>
-    @endforeach @if (count($typescentres) == 0)
-    <h4>Pas de centre pour le moment</h4>
+    @endforeach @if (count($typeappointments) == 0)
+    <h4>Pas de appointment pour le moment</h4>
     @endif
 </div>
 <div class="evenements-list-container">
@@ -206,7 +206,7 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        @if (count($typescentres) == 0)
+        @if (count($typeappointments) == 0)
         <tbody>
             <tr>
                 <th scope="row">----</th>
@@ -215,12 +215,12 @@
                
             </tr>
         </tbody>
-        @endif @if (count($typescentres) != 0)
+        @endif @if (count($typeappointments) != 0)
         <tbody>
-            @foreach ($typescentres as $centre)
+            @foreach ($typeappointments as $appointment)
             <tr>
-                <th scope="row">{{ $centre["id"] }}</th>
-                <td>{{ $centre["type"] }}</td>
+                <th scope="row">{{ $appointment["id"] }}</th>
+                <td>{{ $appointment["type"] }}</td>
          
                 
             
@@ -229,7 +229,7 @@
 
 <form
                         class="edit-form"
-                        action="/typecentre/{{ $centre['id'] }}/modifiertype"
+                        action="/typeappointment/{{ $appointment['id'] }}/modifiertype"
                         method="GET"
                     >
                         <button
@@ -246,7 +246,7 @@
                             
 
 
-                    <form class="delete-form" action="/deletetype/{{$centre->id}}"method="POST">
+                    <form class="delete-form" action="/deletetypeappointement/{{$appointment->id}}"method="POST">
                         @csrf @method('DELETE')
                         <button class="btn btn-danger" data-toggle="tooltip" data-placement="left" title="supprimer" >                    
                          <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i>   

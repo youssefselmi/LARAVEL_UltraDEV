@@ -53,20 +53,18 @@ class CentreController extends Controller
 
 
         $data = request()->validate([
-            'nom' =>'required|alpha|min:2',
+            'nom' =>'required|min:2',
             'image' => ['required', 'image'],
-            'locale' =>'required|alpha|min:2',
+            'locale' =>'required|min:2',
             'type_id' =>'',
         ],
         
         [
-            'nom.required' =>'Remplir le nom ',
-            'locale.required' =>'Remplir la locale ',
-            'image.required' =>'Remplir image ',
+            'nom.required' =>'Nom obligatoire ',
+            'locale.required' =>'locale obligatoire ',
+            'image.required' =>'image obligatoire ',
             
-            
-            'locale.alpha' =>'Locale ne doit pas contenir des caracteres speciaux ',
-            'nom.alpha' =>'Locale ne doit pas contenir des caracteres speciaux ',
+       
 
 
         ]  
@@ -125,20 +123,16 @@ class CentreController extends Controller
     public function update(Centre $centre,Request $request){
 
         $data = $request->validate([
-            'nom' =>'required|alpha|min:2',
+            'nom' =>'required|min:2',
             'image' => ['required', 'image'],
-            'locale' =>'required|alpha|min:2',
+            'locale' =>'required|min:2',
             'type_id' =>'',
         ],
         
         [
-            'nom.required' =>'Remplir le nom ',
-            'locale.required' =>'Remplir la localisation ',
-            'image.required' =>'Remplir image ',
-            
-            
-            'locale.alpha' =>'Locale ne doit pas contenir des caracteres speciaux ',
-            'nom.alpha' =>'Locale ne doit pas contenir des caracteres speciaux ',   
+            'nom.required' =>'Nom obligatoire ',
+            'locale.required' =>'locale obligatoire ',
+            'image.required' =>'image obligatoire ', 
         ]  
     );
 

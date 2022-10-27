@@ -9,7 +9,28 @@
 
 
 
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+}
 
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+.center {
+margin: auto;
+width: 40%;
+border: 5px solid #FFFF00;
+padding: 10px;
+}
+</style>
 
 
 
@@ -27,39 +48,8 @@
 
 
 <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
-        <h2 class="text-lg font-medium mr-auto">Point of Sale</h2>
-        <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-           
-            <div class="pos-dropdown dropdown ml-auto sm:ml-0">
-                <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
-                    <span class="w-5 h-5 flex items-center justify-center">
-                        <i class="w-4 h-4" data-lucide="chevron-down"></i>
-                    </span>
-                </button>
-                <div class="pos-dropdown__dropdown-menu dropdown-menu">
-                    <ul class="dropdown-content">
-                        <li>
-                            <a href="" class="dropdown-item">
-                                <i data-lucide="activity" class="w-4 h-4 mr-2"></i>
-                                <span class="truncate">INV-0206020 - {{ $fakers[3]['users'][0]['name'] }}</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="dropdown-item">
-                                <i data-lucide="activity" class="w-4 h-4 mr-2"></i>
-                                <span class="truncate">INV-0206022 - {{ $fakers[4]['users'][0]['name'] }}</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="dropdown-item">
-                                <i data-lucide="activity" class="w-4 h-4 mr-2"></i>
-                                <span class="truncate">INV-0206021 - {{ $fakers[5]['users'][0]['name'] }}</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <h2 class="text-lg font-medium mr-auto">Formation</h2>
+
     </div>
 
 
@@ -102,7 +92,7 @@
 
 
 </div>
-              
+
 
 
 
@@ -124,26 +114,25 @@
 
  <!-- BEGIN: Profile Info -->
     <div class="intro-y box px-5 pt-5 mt-5">
-        <div class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5 -mx-5">
-          
-            <div class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
-                <div class="font-medium text-center lg:text-left lg:mt-3">formation Details</div>
-                <div class="flex flex-col justify-center items-center lg:items-start mt-4">
-                 
-                    <div class="truncate sm:whitespace-normal flex items-center mt-3">
-                        Formation : {{ $formations->nom }}
-                    </div>
-                    <div class="truncate sm:whitespace-normal flex items-center mt-3">
-                    Lieu : {{ $formations->description }}
-                    </div>
+        <div class="flex flex-col lg:flex-row border-b
+border-slate-200/60 dark:border-darkmode-400 pb-5 -mx-5">
 
-                </div>
+        <div class="center card">
+  <img  src="{{ '../../storage/imgs/'.$formations['image'] }}"
+alt="Avatar" style="width:100%">
+  <div class="container">
+    <h3 class="text-lg font-medium mr-auto"><b> {{ $formations->nom }}</b></h3>
+    <div class="truncate sm:whitespace-normal flex items-center
+mt-3"><h5 class="text-lg font-medium mr-auto">Description:  </h5>
+{{ $formations->description }}  </div>
+    <div class="truncate sm:whitespace-normal flex items-center
+mt-3"><h5 class="text-lg font-medium mr-auto">Formateur:  </h5>     {{
+$formations->nom_formateur }}  </div>
+</div>
+</div>
             </div>
-            
         </div>
-     
-    </div>
-    <!-- END: Profile Info -->
+
 
 
 
@@ -157,8 +146,8 @@
 
 
 
-<!--  ////////////////////////////////////////////////////////////////////////////////////////////////////////   -->
- 
+<!--  ////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
 
 
 
@@ -182,7 +171,8 @@
 
 
 
-  
+
+
 
 
 

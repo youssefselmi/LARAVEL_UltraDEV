@@ -14,7 +14,7 @@
 
 
 
-<h1>Modifier le type</h1>
+<h1>Modification d'une reponse</h1>
 <hr />
 <br /><br />
 
@@ -27,37 +27,62 @@
     autocomplete="off"
     class="needs-validation"
     novalidate
-    method="POST"
-    action="/typecentre/{{ $typecentre->id }}"
+    method="POST"   
+    action="/reponse/{{ $reponse->id }}"
     enctype="multipart/form-data"
     onsubmit="return checkDate()"
 >
     @csrf @method('PUT')
 
-
-    
-
-    <div class="input-group">
-                        <input  value="{{$typecentre->type}}" id="crud-form-3" name="type" type="text" class="form-control" placeholder="Type de centre .." aria-describedby="input-group-1">
-                        <div id="input-group-1" class="input-group-text">Type</div>
-                    </div>
-
-        
-  
-    
-                    <div class="alert alert-danger alert-dismissible fade show">
-    @error('type')
-    <strong>Erreur</strong>
-    {{$message}}
-    @enderror
+    <div class="position-relative row form-group">
+        <label for="reponse" class="col-sm-2 col-form-label"
+            >Reponse</label
+        >
+        <div class="col-sm-10">
+            <input
+                value="{{$reponse->reponse}}"
+                name="reponse"
+                placeholder="e.g Tomorrowland"
+                type="text"
+                class="form-control"
+                required
+            />
+        </div>
     </div>
 
 
+   
 
 
 
 
-  
+
+
+
+
+
+    <div class="position-relative row form-group">
+        <label for="reclamation_id" class="col-sm-2 col-form-label"
+            >Reclamation id</label
+        >
+        <div class="col-sm-10">
+            <input
+                value="{{$reponse->reclamation_id}}"
+                name="reclamation_id"
+                placeholder="e.g Tomorrowland"
+                type="text"
+                class="form-control"
+                required
+            />
+        </div>
+    </div>
+
+
+    
+
+
+    
+
 
     
  

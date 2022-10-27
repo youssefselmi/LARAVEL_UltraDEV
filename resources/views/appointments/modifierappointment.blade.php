@@ -14,7 +14,7 @@
 
 
 
-<h1>Modifier le type</h1>
+<h1>Modification d'un appointment</h1>
 <hr />
 <br /><br />
 
@@ -28,31 +28,98 @@
     class="needs-validation"
     novalidate
     method="POST"
-    action="/typecentre/{{ $typecentre->id }}"
+    action="/appointment/{{ $appointment->id }}"
     enctype="multipart/form-data"
     onsubmit="return checkDate()"
 >
     @csrf @method('PUT')
-
-
-    
-
-    <div class="input-group">
-                        <input  value="{{$typecentre->type}}" id="crud-form-3" name="type" type="text" class="form-control" placeholder="Type de centre .." aria-describedby="input-group-1">
-                        <div id="input-group-1" class="input-group-text">Type</div>
-                    </div>
-
-        
-  
-    
-                    <div class="alert alert-danger alert-dismissible fade show">
-    @error('type')
-    <strong>Erreur</strong>
-    {{$message}}
-    @enderror
+    <div class="position-relative row form-group">
+        <label for="nom" class="col-sm-2 col-form-label"
+            >Nom de appointment</label
+        >
+        <div class="col-sm-10">
+            <input
+                value="{{$appointment->nom}}"
+                name="nom"
+                placeholder="e.g Tomorrowland"
+                type="text"
+                class="form-control"
+                required
+            />
+        </div>
+    </div>
+    <div class="position-relative row form-group">
+        <label for="image" class="col-sm-2 col-form-label">Image</label>
+        <div class="col-sm-10">
+            <input
+                name="image"
+                id="exampleFile"
+                type="file"
+                class="form-control-file"
+                accept="image/png, image/gif, image/jpeg"
+            />
+            <small class="form-text text-muted"
+                >Choisissez des photos avec des bonnes qualités</small
+            >
+        </div>
     </div>
 
 
+
+
+
+    
+
+
+    
+    <div class="position-relative row form-group">
+    <label for="locale" class="col-sm-2 col-form-label">Type de appointment</label>
+    <div class="col-sm-10">
+    <select class="form-control"name="type_id">
+            @foreach ($les as $key => $value)
+            <option value="{{$value->id}}">
+                {{ $value->type }}
+            </option>
+            @endforeach
+        </select>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="position-relative row form-group">
+        <label for="locale" class="col-sm-2 col-form-label"
+            >Nom de locale</label
+        >
+        <div class="col-sm-10">
+            <input
+                value="{{$appointment->locale}}"
+                name="locale"
+                placeholder="e.g Tomorrowland"
+                type="text"
+                class="form-control"
+                required
+            />
+            <div class="invalid-feedback">Veuillez entrer un valid locale</div>
+        </div>
+    </div>
 
 
 

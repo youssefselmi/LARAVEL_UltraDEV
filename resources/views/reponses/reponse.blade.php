@@ -11,13 +11,10 @@
 
 
 
-<h2 class="intro-y text-lg font-medium mt-10">Types Centres</h2>
+<h2 class="intro-y text-lg font-medium mt-10">Reponses</h2>
 
 <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-<form class="edit-form" action="/addtypecentre" method="GET" >
 
-<button class="btn btn-primary shadow-md mr-2">Ajouter un type de centre</button>
-</form>
 <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center">
@@ -70,60 +67,25 @@
 
 
 
-<div class="head" style="display: block-flex; align-items: center">
-    <hr />
-    <br />
-    <div class="text-right">
-        <div
-            role="group"
-            class="btn-group-sm btn-group btn-group-toggle"
-            data-toggle="buttons"
-        >
-            <label
-                onclick="toGrid()"
-                class="btn btn-outline-primary p-2 btn-transition"
-            >
-                <input
-                    type="radio"
-                    name="options"
-                    id="option1"
-                    autocomplete="off"
-                />
-                Grid
-            </label>
-            <label
-                onclick="toList()"
-                class="btn btn-outline-primary p-2 btn-transition focus active"
-            >
-                <input
-                    type="radio"
-                    name="options"
-                    id="option2"
-                    autocomplete="off"
-                />
-                List
-            </label>
-        </div>
-    </div>
-</div>
+
 
 <br />
 <div
     class="evenements-grid-container flex-wrap"
     style="gap: 1.5rem; display: none"
 >
-@foreach ($typescentres as $centre)
+@foreach ($reponses as $reclamation)
 
 <div
         class="card mt-2"
         style="width: 20rem; transition: opacity 0.5s"
-        id="{{ $centre->id }}"
+        id="{{ $reclamation->id }}"
     >
       
         <div class="card-body">
           
             <p class="card-text text-muted text-truncate">
-                {{ $centre["type"] }}
+                {{ $reclamation["reponse"] }}
             </p>
             <div
                 class="actions"
@@ -133,14 +95,14 @@
                     align-items: center;
                 "
             >
-                <a href="/centre" style="opacity : 0; width : 0; height : 0" disabled>Explorer plus</a>
+                <a href="/reclamation" style="opacity : 0; width : 0; height : 0" disabled>Explorer plus</a>
                 <div
                     class="action-icon-buttons"
                     style="display: flex; gap: 1rem"
                 >
                     <form
                         class="edit-form"
-                        action="/centre/{{ $centre['id'] }}/modifier"
+                        action="/reponse/{{ $reclamation['id'] }}/modifierreponse"
                         method="GET"
                     >
                         <button
@@ -167,7 +129,7 @@
                     </form>
                     <form
                         class="delete-form"
-                        action="/centre/{{$centre->id}}"
+                        action="/deletereponse/{{$reclamation->id}}"
                         method="POST"
                     >
                         @csrf @method('DELETE')
@@ -193,8 +155,8 @@
             </div>
         </div>
     </div>
-    @endforeach @if (count($typescentres) == 0)
-    <h4>Pas de centre pour le moment</h4>
+    @endforeach @if (count($reponses) == 0)
+    <h4>Pas de reponse pour le moment</h4>
     @endif
 </div>
 <div class="evenements-list-container">
@@ -202,11 +164,13 @@
         <thead>
             <tr>
                 <th>ID</th>
-                 <th>Type</th>
+                 <th>Titre reponse</th>
+                 <th>Reclamation</th>
+
                 <th>Actions</th>
             </tr>
         </thead>
-        @if (count($typescentres) == 0)
+        @if (count($reponses) == 0)
         <tbody>
             <tr>
                 <th scope="row">----</th>
@@ -215,13 +179,15 @@
                
             </tr>
         </tbody>
-        @endif @if (count($typescentres) != 0)
+        @endif @if (count($reponses) != 0)
         <tbody>
-            @foreach ($typescentres as $centre)
+            @foreach ($reponses as $reponse)
             <tr>
-                <th scope="row">{{ $centre["id"] }}</th>
-                <td>{{ $centre["type"] }}</td>
-         
+                <th scope="row">{{ $reponse["id"] }}</th>
+                <td>{{ $reponse["reponse"] }}</td>
+               
+                <td>{{ $reponse["reclamation_id"] }}</td>
+
                 
             
                 <td class="table-report__action w-56">
@@ -229,7 +195,8 @@
 
 <form
                         class="edit-form"
-                        action="/typecentre/{{ $centre['id'] }}/modifiertype"
+                        action="/reponse/{{ $reponse['id'] }}/modifierreponse"
+                        
                         method="GET"
                     >
                         <button
@@ -246,7 +213,7 @@
                             
 
 
-                    <form class="delete-form" action="/deletetype/{{$centre->id}}"method="POST">
+                    <form class="delete-form" action="/deletereponse/{{$reclamation->id}}"method="POST">
                         @csrf @method('DELETE')
                         <button class="btn btn-danger" data-toggle="tooltip" data-placement="left" title="supprimer" >                    
                          <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i>   
