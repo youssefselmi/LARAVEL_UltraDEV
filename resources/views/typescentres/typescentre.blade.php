@@ -14,7 +14,7 @@
 <h2 class="intro-y text-lg font-medium mt-10">Types Centres</h2>
 
 <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-<form class="edit-form" action="/addtypecentre" method="GET" >
+<form class="edit-form" action="/addtype" method="GET" >
 
 <button class="btn btn-primary shadow-md mr-2">Ajouter un type de centre</button>
 </form>

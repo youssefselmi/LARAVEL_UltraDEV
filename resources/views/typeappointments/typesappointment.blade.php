@@ -246,7 +246,7 @@
                             
 
 
-                    <form class="delete-form" action="/deletetypeappointement/{{$appointment->id}}"method="POST">
+                    <form class="delete-form" action="/deletetype/{{$appointment->id}}"method="POST">
                         @csrf @method('DELETE')
                         <button class="btn btn-danger" data-toggle="tooltip" data-placement="left" title="supprimer" >                    
                          <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i>   

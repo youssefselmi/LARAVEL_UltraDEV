@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>UltraSanté</title>
+  <title>Medilab Bootstrap Template - Index</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -42,8 +42,8 @@
   <div id="topbar" class="d-flex align-items-center fixed-top">
     <div class="container d-flex justify-content-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com">ultradev@example.com</a>
-        <i class="bi bi-phone"></i> 72 247 229
+        <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com">contact@example.com</a>
+        <i class="bi bi-phone"></i> +1 5589 55488 55
       </div>
       <div class="d-none d-lg-flex social-links align-items-center">
         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -68,9 +68,25 @@
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link scrollto" href="#departments">Departments</a></li>
-          <li><a class="nav-link scrollto" href="#doctors">Centres</a></li>
-       
-            <li><a class="nav-link scrollto active" href="/addreclamation">Reclamer Ici</a></li>
+          <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
+          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+
+            </ul>
+            <li><a class="nav-link scrollto active" href="#hero">Reclamer Ici</a></li>
 
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
@@ -86,7 +102,8 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container">
-      <h1>Welcome to Ultradev</h1>
+      <h1>Welcome to Medilab</h1>
+      <h2>We are team of talented designers making websites with Bootstrap</h2>
       <a href="#about" class="btn-get-started scrollto">Get Started</a>
     </div>
   </section><!-- End Hero -->
@@ -185,32 +202,37 @@
 
         <div class="row">
 
-
-
-
-
-        @foreach ($less as $type)
-
-
           <div class="col-lg-3 col-md-6">
             <div class="count-box">
-            <i class="fa fa-building" aria-hidden="true"></i>
-              <span data-purecounter-start="0" data-purecounter-end="14" data-purecounter-duration="1" class="purecounter"></span>
-              <p>{{$type->type}}</p>
+              <i class="fas fa-user-md"></i>
+              <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Doctors</p>
             </div>
           </div>
 
-       
-@endforeach
-     
+          <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
+            <div class="count-box">
+              <i class="far fa-hospital"></i>
+              <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Departments</p>
+            </div>
+          </div>
 
+          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+            <div class="count-box">
+              <i class="fas fa-flask"></i>
+              <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Research Labs</p>
+            </div>
+          </div>
 
-
-
-
-
-
-
+          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+            <div class="count-box">
+              <i class="fas fa-award"></i>
+              <span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Awards</p>
+            </div>
+          </div>
 
         </div>
 
@@ -442,63 +464,6 @@
       </div>
     </section><!-- End Departments Section -->
 
-
-<!-- ======= Formations  Section ======= -->
-<section id="doctors" class="doctors">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Formations</h2>
-          <p>Les differents formations disponible chez nous</p>
-        </div>
-
-        <div class="row">
-
-
-
-
-        @foreach ($formations as $formation)
-
-          <div class="col-lg-6">
-            <div class="member d-flex align-items-start">
-              <div class="pic"><img src="{{
-'storage/imgs/'.$formation['image'] }}" class="img-fluid"
-alt=""></div>
-              <div class="member-info">
-                <h4>{{ $formation["nom"] }}</h4>
-                <h6>Description :
-
-
-            </h6>{{ $formation["description"] }}
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          @endforeach
-
-
-
-
-
-        </div>
-
-      </div>
-    </section><!-- End Formations Section -->
-
-
-
-
-
-
     <!-- ======= Doctors Section ======= -->
     <section id="doctors" class="doctors">
       <div class="container">
@@ -509,7 +474,6 @@ alt=""></div>
         </div>
 
         <div class="row">
-
 
 
 
@@ -529,7 +493,7 @@ alt=""></div>
 @endforeach
 
             </h6>
-           <p>Cliquer pour Dévouvrir plus </p>
+           <p>Dévouvrir plus ici --></p>
                 <div class="social">
                   <a href=""><i class="ri-twitter-fill"></i></a>
                   <a href=""><i class="ri-facebook-fill"></i></a>

@@ -204,9 +204,9 @@ height : 50px;
                 <td class="table-report__action w-56">
 
 
-                <form
+<form
                         class="edit-form"
-                        action="/repondre/{{$rec->id}}"
+                        action="/repondre"
                         method="GET"
                     >
                         <button
@@ -216,7 +216,7 @@ height : 50px;
                             data-placement="top"
                             title="modifier"
                         >
-                        <i data-lucide="check-square" class="w-4 h-4 mr-1"></i>        Repondre         </button>
+                        <i data-lucide="check-square" class="w-4 h-4 mr-1"></i>        Repondre                </button>
                     </form>
 
 
@@ -233,21 +233,6 @@ height : 50px;
 
 
 
-                 
-                      <form
-                        class="edit-form"
-                        action="/showreponses/{{$rec->id}}"
-                        method="GET"
-                        >
-                        <button
-                            class="btn btn-success"
-                            style="color: rgb(194, 194, 194); font-size: 1.2rem"
-                            data-toggle="tooltip"
-                            data-placement="top"
-                            title="modifier"
-                        >
-                        <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Show reponses</button>
-                    </form>
 
 
 

@@ -10,11 +10,10 @@ class Reponse extends Model
     use HasFactory;
 
     protected $fillable = [
-        'reponse',
-        'reclamation_id'
+        'response',
     ];
 
- 
+
 
     public function reclamation(){
         return $this->hasOne(Reclamation::class);

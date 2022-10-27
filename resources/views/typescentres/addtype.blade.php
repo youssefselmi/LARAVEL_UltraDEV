@@ -31,28 +31,27 @@
     class="needs-validation"
     novalidate
     method="POST"
-    action="/addtypecentre"
+    action="/addtype"
     enctype="multipart/form-data"
 >
     @csrf
     <div class="position-relative row form-group">
-        <label for="type" class="col-sm-2 col-form-label" >Type </label >
-
-
-       <!-- <div class="col-sm-10">
-            <input  name="type" placeholder="type.." type="text" class="form-control"/>
-        </div> -->
-
-
-                  <div class="input-group">
-                        <input id="crud-form-3" name="type" type="text" class="form-control" placeholder="Type de centre .." aria-describedby="input-group-1">
-                        <div id="input-group-1" class="input-group-text">Type</div>
-                    </div>
+        <label for="type" class="col-sm-2 col-form-label"
+            >Type </label
+        >
+        <div class="col-sm-10">
+            <input
+                name="type"
+                placeholder="type.."
+                type="text"
+                class="form-control"
+                
+                
+            />
+        </div>
 
         
-
-
-        <div class="alert alert-danger alert-dismissible fade show">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
     @error('type')
     <strong>Erreur</strong>
     {{$message}}
