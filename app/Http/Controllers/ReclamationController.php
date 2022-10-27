@@ -18,6 +18,7 @@ class ReclamationController extends Controller
        // $reclamations = json_incode($rec, true);
 
        // return($rec);
+    //    dd($reclamations);
         return view('reclamation.reclamation', [ 'reclamations' => \App\Models\Reclamation::all() ]);
     }
 
@@ -30,7 +31,7 @@ class ReclamationController extends Controller
         $data = request()->validate([
             'nom' =>'required',
             'image' => ['required', 'image'],
-            'date' =>'required',
+            // 'date' =>'required',
             'description' =>'required',
             'mail' =>'required',
 
@@ -38,7 +39,7 @@ class ReclamationController extends Controller
         
         [
             'nom.required' =>'Remplir le nom ',
-            'date.required' =>'Remplir la locale ',
+            // 'date.required' =>'Remplir la locale ',
             'description.required' =>'Remplir description ',
             'mail.required' =>'Remplir mail ',
 
@@ -50,10 +51,14 @@ class ReclamationController extends Controller
             request()->file('image')->getClientOriginalName()
         );
 
+
+
+        $date = date('Y-m-d H:i:s');
+
         \App\Models\Reclamation::create([
             'nom' => $data['nom'],
             'image' => $data['image']->getClientOriginalName(),
-            'date' => $data['date'],
+            'date' => $date,
             'description' => $data['description'],
             'mail' => $data['mail'],
 
