@@ -27,16 +27,22 @@
 
 <form  data-single="true"   autocomplete="off" novalidate method="POST" action="/addcentre" enctype="multipart/form-data">
     @csrf
+
+
     <div class="position-relative row form-group">
         <label for="nom" class="col-sm-2 col-form-label"
             >Nom de centre</label
         >
-        <div class="col-sm-10">
-            <input name="nom" placeholder="nom.."  type="text" class="form-control" />
-        </div>
+       
 
 
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <div class="input-group">
+                        <input id="crud-form-3" name="nom" type="text" class="form-control" placeholder="Nom de centre .." aria-describedby="input-group-1">
+                        <div id="input-group-1" class="input-group-text">Nom</div>
+                    </div>
+
+
+        <div class="alert alert-danger alert-dismissible fade show">
     @error('nom')
     <strong>Erreur</strong>
     {{$message}}
@@ -75,7 +81,7 @@
         </div>
 
 
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <div class="alert alert-danger alert-dismissible fade show">
     @error('image')
     <strong>Erreur</strong>
     {{$message}}
@@ -104,17 +110,12 @@
         <label for="locale" class="col-sm-2 col-form-label"
             >Locale</label
         >
-        <div class="col-sm-10">
-            <input
-                name="locale"
-                placeholder="locale.."
-                type="text"
-                class="form-control"
-                
-            />
-        </div>
+        <div class="input-group">
+                        <input id="crud-form-3" name="locale" type="text" class="form-control" placeholder="Locale .." aria-describedby="input-group-1">
+                        <div id="input-group-1" class="input-group-text">Locale</div>
+                    </div>
 
-           <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <div class="alert alert-danger alert-dismissible fade show">
     @error('locale')
     <strong>Erreur</strong>
     {{$message}}

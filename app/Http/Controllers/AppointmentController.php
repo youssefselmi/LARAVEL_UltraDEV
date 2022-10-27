@@ -124,7 +124,7 @@ class AppointmentController extends Controller
         //return dd($les);
         return view('appointments.modifierappointment', compact('appointment'), compact('les'));
     }
-
+    
     public function update(Appointment $appointment,Request $request){
 
         $data = $request->validate([
@@ -136,15 +136,16 @@ class AppointmentController extends Controller
         ],
         
         [
-            'with.required' =>'Remplir le nom ',
-            'for.required' =>'Remplir la locale ',
-            'reason.required' =>'Remplir image ',
-            
-            
+            'with.required' =>'Remplir ce champ ',
+            'for.required' =>'Remplir ce champ ',
+            'reason.required' =>'Remplir la raison ',
+         
             'with.alpha' =>'Locale ne doit pas contenir des caracteres speciaux ',
             'for.alpha' =>'Locale ne doit pas contenir des caracteres speciaux ',
         ]  
     );
+
+
 
         // $path = '';
         // if (request()->hasFile('image')){

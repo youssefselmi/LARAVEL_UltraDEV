@@ -11,70 +11,116 @@
 
 
 
-
-
-
-<h1>Modifier le type</h1>
+<h1>Creation d'une Reponse</h1>
 <hr />
 <br /><br />
+
+
 
 <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 lg:col-span-6">
             <!-- BEGIN: Form Layout -->
             <div class="intro-y box p-5">
 
-<form
+
+
+
+
+<form  data-single="true"  
     autocomplete="off"
     class="needs-validation"
     novalidate
     method="POST"
-    action="/typecentre/{{ $typecentre->id }}"
+    action="/repondre"
     enctype="multipart/form-data"
-    onsubmit="return checkDate()"
+    
 >
-    @csrf @method('PUT')
 
 
-    
+    @csrf
 
-    <div class="input-group">
-                        <input  value="{{$typecentre->type}}" id="crud-form-3" name="type" type="text" class="form-control" placeholder="Type de centre .." aria-describedby="input-group-1">
-                        <div id="input-group-1" class="input-group-text">Type</div>
-                    </div>
 
-        
-  
-    
-                    <div class="alert alert-danger alert-dismissible fade show">
-    @error('type')
-    <strong>Erreur</strong>
-    {{$message}}
-    @enderror
+
+
+    <div class="position-relative row form-group">
+        <label for="reclamation_id" class="col-sm-2 col-form-label"
+            >Id reclamation </label
+        >
+        <div class="col-sm-10">
+            <select name="reclamation_id" placeholder="reponse.."type="number" class="form-control" > 
+
+            @foreach ($array as $key => $value)
+            <option value="{{$value}}">
+                {{ $value}}
+            </option>
+            @endforeach
+            </select>
+        </div>   
     </div>
 
 
 
 
-
-
-  
+    <div class="position-relative row form-group">
+        <label for="reponse" class="col-sm-2 col-form-label" >La reponse </label>
+        <div class="col-sm-10">
+            <input
+                name="reponse"
+                placeholder="reponse.."
+                type="text"
+                class="form-control"
+                
+                
+            />
+        </div>
 
     
- 
- 
+
+
+    </div>
+
+
+
+
+   
+
+
+
+
+
+    
+
+
+
+
+
+
+    <br />
+
+
     <div class="position-relative row form-check p-0">
         <div class="col-sm-10 offset-sm-2">
             <button class="btn btn-primary">Soumettre</button>
         </div>
     </div>
+    
 </form>
 
-</div></div></div>
+
+</div>
+</div>
+</div>
 
 <button type="button" class="open-modal" data-toggle="modal" data-target="#exampleModal" style="width : 0; height : 0; opacity : 0">
 </button>
 
+
+
+
+
+
 <script>
+    document.querySelector("a#evenement-create").classList.add("mm-active");
     checkDate = () => {
         const dateValue = document.querySelector('#event-date').value 
         console.log(dateValue && new Date(dateValue).getTime() >= new Date().getTime())
@@ -88,11 +134,9 @@
         }
 
     }
-</script>
-
-<script>
-    document.querySelector("a#create").classList.add("mm-active");
     
+</script>
+<script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {
         "use strict";
@@ -122,10 +166,8 @@
             false
         );
     })();
+
 </script>
-
-
-
 
 
 
