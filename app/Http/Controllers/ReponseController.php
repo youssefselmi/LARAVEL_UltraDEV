@@ -15,15 +15,15 @@ class ReponseController extends Controller
 
     
     
-    public function index()
-    {
-        //  $less = DB::table('type_centres')->get();
-        //    return dd($less);
-     //   $les = DB::table('type_centres')->get();
+    // public function index()
+    // {
+    //     //  $less = DB::table('type_centres')->get();
+    //     //    return dd($less);
+    //  //   $les = DB::table('type_centres')->get();
 
 
-        return view('reponses.reponse', [ 'reponses' => \App\Models\Reponse::all() ]);
-    }
+    //     return view('reponses.reponse', [ 'reponses' => \App\Models\Reponse::all() ]);
+    // }
 
 
 
@@ -100,7 +100,7 @@ class ReponseController extends Controller
             'reponse' => $data['reponse'],
             'reclamation_id' => $data['reclamation_id'],
         ]);       
-        return redirect('/reponse');
+        return redirect('/reclamation');
     }
 
 
@@ -151,7 +151,19 @@ class ReponseController extends Controller
             'reclamation_id' => $data['reclamation_id'],
         ]);
 
-        return redirect('/reponse');
+        
+
+ $url= \URL::current();
+
+//   dd($url);
+      $key=strpos($url,"e/");
+ 
+  
+     $var= substr($url, $key+2, strlen($url));
+  
+// dd($var);
+  
+        return redirect("/reponses"."/".$var);
     }
 
 
@@ -170,52 +182,41 @@ class ReponseController extends Controller
 
 
 
+function toObject($arr) {
+    if (is_array($arr)) {
+        // Return object 
+        return (object) array_map('toObject', $arr);
+    }
+     return false;
+}
 
 
-
-public function getreponses()
+public function index()
 {
   
 
- //dd($lesreponses);
+
 
 
  $url= \URL::current();
- //dd($url);
-    // echo $url;
-   
-   //  $key = array_search('repondre/', $url);
-   //  dd($key);
-    //  echo $key;
- 
+
+//  dd($url);
      $key=strpos($url,"s/");
- 
-     // dd($key);
-     // echo $key;
- 
-      //$key1=strpos($url,"4");
- 
-     // dd($key1);
-     //echo $key1;
- 
-  //  dd(strlen($url));
+
  
     $var= substr($url, $key+2, strlen($url));
- 
- //dd($var);
-     //echo $var;
  
      $array = array(
          $var 
      ); 
      
-     
-     $lesreponses = DB::table('reponses')->get()->where('reclamation_id',$var);
+     $reponses = DB::table('reponses')->where('reclamation_id',$var)->get();
+    //  $data1 = json_decode($data, true);
 
-    // dd($lesreponses);
+$reponses=Reponse::all()->where('reclamation_id',$var);
+// dd($reponses);
+return view('reponses.reponse', compact('reponses'));
 
-
-    return view('reponses.showreponses', [ 'reponses' => \App\Models\Reponse::all() ]);
 }
 
 
