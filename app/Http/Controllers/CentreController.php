@@ -16,6 +16,8 @@ class CentreController extends Controller
     public function index()
     {
           $less = DB::table('type_centres')->get();
+
+          
         //    return dd($less);
      //   $les = DB::table('type_centres')->get();
         return view('centres.centre', [ 'centres' => \App\Models\Centre::all() ], compact('less'));
@@ -51,17 +53,20 @@ class CentreController extends Controller
 
 
         $data = request()->validate([
-            'nom' =>'required',
+            'nom' =>'required|min:2',
             'image' => ['required', 'image'],
-            'locale' =>'required',
-            'type_id' =>'required',
+            'locale' =>'required|min:2',
+            'type_id' =>'',
         ],
         
         [
-            'nom.required' =>'Remplir le nom ',
-            'locale.required' =>'Remplir la localisation ',
-            'image.required' =>'Remplir image ',
-            'type_id.required' =>'Remplir le type ',      
+            'nom.required' =>'Nom obligatoire ',
+            'locale.required' =>'locale obligatoire ',
+            'image.required' =>'image obligatoire ',
+            
+       
+
+
         ]  
     );
         request()->file('image')->move(
@@ -118,16 +123,16 @@ class CentreController extends Controller
     public function update(Centre $centre,Request $request){
 
         $data = $request->validate([
-            'nom' =>'required',
+            'nom' =>'required|min:2',
             'image' => ['required', 'image'],
-            'locale' =>'required',
-            'type_id' =>'required',
+            'locale' =>'required|min:2',
+            'type_id' =>'',
         ],
         
         [
-            'nom.required' =>'Remplir le nom ',
-            'locale.required' =>'Remplir la locale ',
-            'type_id.required' =>'Remplir le type ',      
+            'nom.required' =>'Nom obligatoire ',
+            'locale.required' =>'locale obligatoire ',
+            'image.required' =>'image obligatoire ', 
         ]  
     );
 

@@ -33,25 +33,24 @@
     onsubmit="return checkDate()"
 >
     @csrf @method('PUT')
-    <div class="position-relative row form-group">
-        <label for="nom" class="col-sm-2 col-form-label"
-            >Type de centre</label
-        >
-        <div class="col-sm-10">
-            <input
-                value="{{$typecentre->type}}"
-                name="type"
-                placeholder="e.g Tomorrowland"
-                type="text"
-                class="form-control"
-                required
-            />
-            <div class="invalid-feedback">Veuillez entrer un valid nom</div>
-        </div>
-    </div>
- 
 
+
+    
+
+    <div class="input-group">
+                        <input  value="{{$typecentre->type}}" id="crud-form-3" name="type" type="text" class="form-control" placeholder="Type de centre .." aria-describedby="input-group-1">
+                        <div id="input-group-1" class="input-group-text">Type</div>
+                    </div>
+
+        
   
+    
+                    <div class="alert alert-danger alert-dismissible fade show">
+    @error('type')
+    <strong>Erreur</strong>
+    {{$message}}
+    @enderror
+    </div>
 
 
 

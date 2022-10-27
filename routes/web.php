@@ -7,6 +7,9 @@ use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\CentreController;
 use App\Http\Controllers\TypeCentreController;
+use App\Http\Controllers\Frontofficecontroller;
+use App\Http\Controllers\AppointmentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -115,9 +118,11 @@ Route::get('/typecentre', function () {
 
 });
 Route::get('/typecentre', [App\Http\Controllers\TypeCentreController::class, 'index'])->name("typecentre");
+
+
 Route::delete('/deletetype/{typecentre}', [App\Http\Controllers\TypeCentreController::class, 'destroy']);
-Route::post('/addtype', [App\Http\Controllers\TypeCentreController::class, 'add']);
-Route::get('/addtype', function () {
+Route::post('/addtypecentre', [App\Http\Controllers\TypeCentreController::class, 'add']);
+Route::get('/addtypecentre', function () {
     return view('typescentres.addtype');
 });
 
@@ -167,6 +172,9 @@ Route::get('/centredetail/{id}', function () {
     return view('centres.centre');
 });
 Route::get('/centredetail/{id}', [App\Http\Controllers\CentreController::class, 'show']);
+
+Route::get('/centredetailfront/{id}', [App\Http\Controllers\Frontofficecontroller::class, 'showfront']);
+
     });
 });
 
@@ -190,5 +198,259 @@ Route::get('/centregrid', [App\Http\Controllers\CentreController::class, 'index2
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
+Route::get('/frontoffice', function () {  
+    return view('frontoffice.indexfront');
+
+});
+Route::get('/frontoffice', [App\Http\Controllers\Frontofficecontroller::class, 'indexfront'])->name("front");
+
+
+
+
+
+
+
+///////////////////////////////////////////// route jalel //////////////////////////////////
+
+/////////////////// Session ////////////////////////////       
+
+Route::get('/session', function () {
+    
+    return view('sessions.session');
+
+
+});
+Route::get('/session', [App\Http\Controllers\SessionController::class, 'index'])->name("session");
+Route::delete('/deletesession/{session}', [App\Http\Controllers\SessionController::class, 'destroy']);
+Route::post('/addsession', [App\Http\Controllers\SessionController::class, 'add']);
+Route::get('/addsession', function () {
+    $donnesformation = DB::table('formations')->get();
+    return view('sessions.addsession',compact('donnesformation'));
+});
+
+     
+
+Route::get('/session/{session}/modifiersession', [App\Http\Controllers\SessionController::class, 'getUpdate']);
+Route::put('/session/{session}',[App\Http\Controllers\SessionController::class, 'update']);
+        /////////////// formations /////////////////////
+    
+Route::get('/formation', function () {
+    
+    //  $les = DB::table('type_centres')->get();
+     //  return dd($les);
+     return view('formations.formation'/* ,compact('les') */);
+  });
+  Route::get('/formation', [App\Http\Controllers\FormationController::class, 'index'])->name("formations");
+   
+  
+  
+  Route::post('/addformation', [App\Http\Controllers\FormationController::class, 'add']);
+  Route::get('/addformation', function () {
+        $donnes = DB::table('sessions')->get();
+    //  return dd($donnes);
+      return view('formations.addformation',compact('donnes'));
+  });
+  
+  
+  
+  Route::delete('/deleteformation/{formation}', [App\Http\Controllers\FormationController::class, 'destroy']);
+  Route::get('/formation/{formation}/modifier', [App\Http\Controllers\FormationController::class, 'getUpdate']);
+  Route::put('/formation/{formation}',[App\Http\Controllers\FormationController::class, 'update']);
+  Route::get('/formationdetail/{id}', function () {
+      return view('formations.formation');
+  });
+  Route::get('/formationdetail/{id}', [App\Http\Controllers\FormationController::class, 'show']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ///////////////////////////////// Reclamations elyes ////////////////////////////////////////////////
+
+
+
+  Route::post('/addreclamation', [App\Http\Controllers\ReclamationController::class, 'add']);
+  Route::get('/addreclamation', function () {
+      return view('reclamation.addreclamation');
+  });
+  
+
+
+  Route::get('/reclamation', function () {   
+    return view('reclamation.reclamation');
+});
+Route::get('/reclamation', [App\Http\Controllers\ReclamationController::class, 'index'])->name("reclamation");
+Route::delete('/deletereclamation/{reclamation}', [App\Http\Controllers\ReclamationController::class, 'destroy']);
+
+
+
+
+
+
+///////////////////////////////// response ////////////////////////////////////
+
+/*Route::get('/repondre', function () {   
+    return view('reclamation.reponse');
+});
+*/
+
+  
+
+Route::post('/repondre', [App\Http\Controllers\ReponseController::class, 'add']);
+  Route::get('/repondre/{reclamation}', function () {
+
+    $url= \URL::current();
+//dd($url);
+   // echo $url;
+  
+  //  $key = array_search('repondre/', $url);
+  //  dd($key);
+   //  echo $key;
+
+    $key=strpos($url,"e/");
+
+    // dd($key);
+    // echo $key;
+
+     $key1=strpos($url,"4");
+
+    // dd($key1);
+    //echo $key1;
+
+ //  dd(strlen($url));
+
+   $var= substr($url, $key+2, strlen($url));
+
+//dd($var);
+    //echo $var;
+
+    $array = array(
+        $var 
+    );
+
+
+      return view('reponses.addreponse',compact('array'));
+  });
+
+
+
+
+
+
+
+
+
+
+ /* Route::get('/reponse', function () {   
+    return view('reponses.reponse');
+});*/
+
+Route::delete('/deletereponse/{reponse}', [App\Http\Controllers\ReponseController::class, 'destroy']);
+Route::get('/reponse', [App\Http\Controllers\ReponseController::class, 'index'])->name("reponse");
+
+
+Route::get('/reponse/{reponse}/modifierreponse', [App\Http\Controllers\ReponseController::class, 'getUpdate']);
+Route::put('/reponse/{reponse}',[App\Http\Controllers\ReponseController::class, 'update']);
+
+
+
+
+Route::get('/showreponses', [App\Http\Controllers\ReponseController::class, 'getreponses']);
+
+Route::get('/showreponses/{reclamation}', function () {   
+    return view('reponses.showreponses');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////// AMIR ///////////////////////////////////////////////
+
+
+///////////////////////////////Amir////////////////////////////////////
+
+Route::get('/Appointment', function () {
+    
+    //  $les = DB::table('type_appointments')->get();
+     //  return dd($les);
+     return view('appointments.appointment',compact('les'));
+  });
+  Route::get('/Appointment', [App\Http\Controllers\AppointmentController::class, 'index'])->name("appointments");
+   
+  
+  
+  Route::post('/addappointment', [App\Http\Controllers\AppointmentController::class, 'add']);
+  Route::get('/addappointment', function () {
+        $donnes = DB::table('type_appointments')->get();
+    //  return dd($donnes);
+      return view('appointments.addappointment',compact('donnes'));
+  });
+  
+  
+  
+  Route::delete('/deleteappointment/{appointment}', [App\Http\Controllers\AppointmentController::class, 'destroy']);
+  Route::get('/appointment/{appointment}/modifier', [App\Http\Controllers\AppointmentController::class, 'getUpdate']);
+  Route::put('/appointment/{appointment}',[App\Http\Controllers\AppointmentController::class, 'update']);
+  Route::get('/appointmentdetail/{id}', function () {
+      return view('appointments.appointment');
+  });
+  Route::get('/appointmentdetail/{id}', [App\Http\Controllers\AppointmentController::class, 'show']);
+  
+  Route::get('/appointmentdetailfront/{id}', [App\Http\Controllers\Frontofficecontroller::class, 'showfront']);
+
+ /////////////////// Type Appointment ////////////////////////////       
+
+ Route::get('/typeappointment', function () {
+    
+    return view('typeappointments.typesappointment');
+
+
+});
+Route::get('/typeappointment', [App\Http\Controllers\TypeAppointmentController::class, 'index'])->name("typeappointment");
+
+
+Route::delete('/deletetypeappointement/{typeappointment}', [App\Http\Controllers\TypeAppointmentController::class, 'destroy']);
+Route::post('/addtype', [App\Http\Controllers\TypeAppointmentController::class, 'add']);
+Route::get('/addtype', function () {
+    return view('typeappointments.addtype');
+});
+
+     
+
+Route::get('/typeappointment/{typeappointment}/modifiertype', [App\Http\Controllers\TypeAppointmentController::class, 'getUpdate']);
+Route::put('/typeappointment/{typeappointment}',[App\Http\Controllers\TypeAppointmentController::class, 'update']);
 
 
